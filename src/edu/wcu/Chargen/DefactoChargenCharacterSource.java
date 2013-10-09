@@ -1,7 +1,8 @@
 package edu.wcu.Chargen;
 
 /**
- * Created by jstilwell on 10/8/13.
+ * @author Jeremy Stilwell
+ *
  */
 public class DefactoChargenCharacterSource {
 }
