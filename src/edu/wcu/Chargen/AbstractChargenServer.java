@@ -5,7 +5,7 @@ package edu.wcu.Chargen;
  * @author Alisha Hayman
  * @version 10/8/13.
  */
-public abstract class AbstractChargenServer{
+public abstract class AbstractChargenServer implements ChargenServer{
     private int port;
     private ChargenCharacterSource source;
 
@@ -24,5 +24,10 @@ public abstract class AbstractChargenServer{
 
     public void changeSource(ChargenCharacterSource source) {
         this.source = source;
+    }
+
+    private void listen()
+    {
+
     }
 }
