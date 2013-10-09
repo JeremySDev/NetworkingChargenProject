@@ -1,4 +1,11 @@
-package edu.wcu.Chargen;
+import edu.wcu.Chargen.ChargenCharacterSource;
+import edu.wcu.Chargen.ChargenServer;
+import java.net.ServerSocket;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+
 
 /**
  * AbstractChargenServer is an abstract class that implements the ChargenServer
@@ -15,7 +22,7 @@ package edu.wcu.Chargen;
  * @author Alisha Hayman
  * @version 10/8/13.
  */
-public abstract class AbstractChargenServer implements ChargenServer{
+public abstract class AbstractChargenServer implements ChargenServer {
     private int port;
     private ChargenCharacterSource source;
 
@@ -24,19 +31,22 @@ public abstract class AbstractChargenServer implements ChargenServer{
     public AbstractChargenServer(ChargenCharacterSource source){}
     public AbstractChargenServer(int port, ChargenCharacterSource source){}
 
-    public int getPort() {
+    public int getPort()
+    {
         return port;
     }
 
-    public ChargenCharacterSource getCharacterSource() {
+    public ChargenCharacterSource getCharacterSource()
+    {
         return source;
     }
 
-    public void changeSource(ChargenCharacterSource source) {
+    public void changeSource(ChargenCharacterSource source)
+    {
         this.source = source;
     }
 
-    private void listen()
+    public void listen()
     {
 
     }
