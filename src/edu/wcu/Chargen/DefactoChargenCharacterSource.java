@@ -5,5 +5,10 @@ package edu.wcu.Chargen;
  * @author Alisha Hayman
  * @version 10/9/13
  */
-public class DefactoChargenCharacterSource {
+public class DefactoChargenCharacterSource implements ChargenCharacterSource {
+
+    public char getNextChar()
+    {
+
+    }
 }

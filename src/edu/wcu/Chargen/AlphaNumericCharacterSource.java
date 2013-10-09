@@ -5,5 +5,9 @@ package edu.wcu.Chargen;
  * @author Alisha Hayman
  * @version 10/8/13.
  */
-public class AlphaNumericCharacterSource {
+public class AlphaNumericCharacterSource implements ChargenCharacterSource {
+    public char getNextChar()
+    {
+
+    }
 }

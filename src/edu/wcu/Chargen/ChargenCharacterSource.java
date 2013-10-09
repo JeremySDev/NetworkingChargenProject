@@ -5,5 +5,9 @@ package edu.wcu.Chargen;
  * @author Alisha Hayman
  * @version 10/8/13.
  */
-public class ChargenCharacterSource {
+public interface ChargenCharacterSource {
+    public char getNextChar()
+    {
+
+    }
 }
