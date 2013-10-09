@@ -1,7 +1,9 @@
 package edu.wcu.Chargen;
 
 /**
- * @a
+ * @author Jeremy Stilwell
+ * @author Alisha Hayman
+ * @version 10/8/13.
  */
 public class NumericCharacterSource {
 }

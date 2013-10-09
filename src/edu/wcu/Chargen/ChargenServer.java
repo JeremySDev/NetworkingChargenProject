@@ -5,5 +5,6 @@ package edu.wcu.Chargen;
  * @author Alisha Hayman
  * @version 10/8/13
  */
-public class ChargenServer {
+public interface ChargenServer {
+    public void listen();
 }
