@@ -9,10 +9,10 @@ public abstract class AbstractChargenServer implements ChargenServer{
     private int port;
     private ChargenCharacterSource source;
 
-    public ChargenCharacterSource(){}
-    public ChargenCharacterSource(int port){}
-    public ChargenCharacterSource(ChargenCharacterSource source){}
-    public ChargenCharacterSource(int port, ChargenCharacterSource source){}
+    public AbstractChargenServer(){}
+    public AbstractChargenServer(int port){}
+    public AbstractChargenServer(ChargenCharacterSource source){}
+    public AbstractChargenServer(int port, ChargenCharacterSource source){}
 
     public int getPort() {
         return port;
