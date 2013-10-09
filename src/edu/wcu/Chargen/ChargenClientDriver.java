@@ -6,4 +6,8 @@ package edu.wcu.Chargen;
  * @version 10/8/13.
  */
 public class ChargenClientDriver {
+    public static void main(String[] args)
+    {
+
+    }
 }
