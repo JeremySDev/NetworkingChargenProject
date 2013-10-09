@@ -1,6 +1,11 @@
 package edu.wcu.Chargen;
 
 /**
+ * ChargenServer is the interface to a chargen server implementation. The
+ * interface includes a method: listen(). Classes implementing this interface
+ * will provide an implementation of this method. listen() will listen for
+ * requests from clients.
+ *
  * @author Jeremy Stilwell
  * @author Alisha Hayman
  * @version 10/8/13
