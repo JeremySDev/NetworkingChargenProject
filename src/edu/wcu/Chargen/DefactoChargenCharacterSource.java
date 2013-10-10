@@ -8,7 +8,7 @@ import java.net.DatagramSocket;
 /**
  * The DefactoChargenCharacterSource class implements the ChargenCharacterSource
  * interface and produces the defacto standard character sequence produced by
- * chargen servers.
+ * chargen servers. Used when the
  *
  * @author Jeremy Stilwell
  * @author Alisha Hayman
