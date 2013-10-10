@@ -16,6 +16,8 @@ import java.net.DatagramSocket;
  */
 public class DefactoChargenCharacterSource implements ChargenCharacterSource {
 
+    String data = "!#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+
     public char getNextChar()
     {
         char next = 'f';
