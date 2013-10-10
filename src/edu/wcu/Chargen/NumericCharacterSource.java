@@ -24,7 +24,7 @@ public class NumericCharacterSource implements ChargenCharacterSource {
             placeInArray = 0;
         }
 
-        if (!(placeInArray > 9) && !(placeInArray < 0)
+        if (!(placeInArray > 9) && !(placeInArray < 0))
         {
             returnMe = data.charAt(placeInArray++);
         }

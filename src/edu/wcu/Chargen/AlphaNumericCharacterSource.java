@@ -26,7 +26,7 @@ public class AlphaNumericCharacterSource implements ChargenCharacterSource {
             placeInArray = 0;
         }
 
-        if (!(placeInArray > 61) && !(placeInArray < 0)
+        if (!(placeInArray > 61) && !(placeInArray < 0))
         {
             returnMe = data.charAt(placeInArray++);
         }
