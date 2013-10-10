@@ -19,26 +19,34 @@ import java.net.DatagramSocket;
  */
 public class ChargenTcpServer extends AbstractChargenServer {
 
+    private static final int DEFAULT_PORT = 19;
+
+    private int port;
+
+    private ChargenCharacterSource source;
+
     public ChargenTcpServer()
     {
-
+        this(DEFAULT_PORT, new DefactoChargenCharacterSource());
     }
 
     public ChargenTcpServer(int port)
     {
-
+        this(port, new DefactoChargenCharacterSource());
     }
 
     public ChargenTcpServer(ChargenCharacterSource source)
     {
-
+        this(DEFAULT_PORT, source);
     }
 
     public ChargenTcpServer(int port, ChargenCharacterSource source)
     {
-
+        this.port = port;
+        this.source = source;
     }
 
+    @Override
     public void listen()
     {
 
