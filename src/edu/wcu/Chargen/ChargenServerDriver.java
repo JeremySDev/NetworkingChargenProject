@@ -1,4 +1,5 @@
 package edu.wcu.Chargen;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -19,13 +20,14 @@ import java.net.DatagramSocket;
  * @version 10/8/13.
  */
 public class ChargenServerDriver {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws IOException {
         /* default "well-known" chargen port number */
         int portNum = 19;
 
         /* Server type TCP of UDP*/
         String serverType;
+
+        ChargenServer chargenServer = null;
 
         /* Not enough or too many cmd line args call usage */
         if (args.length == 0 || args.length >= 3)
@@ -34,7 +36,7 @@ public class ChargenServerDriver {
         }
 
         /* Only one arg then set the server type */
-        /*TODO: ask Kreahling if we should exit or try to get the right server type*/
+        /* TODO: ask Kreahling if we should exit or try to get the right server type */
         if (args.length == 1)
         {
             if (!serverType.equalsIgnoreCase("TCP") ||
@@ -50,11 +52,18 @@ public class ChargenServerDriver {
         {
             portNum = Integer.decode(args[1]);
         }
+
         if (serverType.equalsIgnoreCase("TCP"))
         {
-            ChargenServer chargenServer = new ChargenTcpServer(portNum,)
+            chargenServer = new ChargenTcpServer(portNum);
         }
 
+        if (serverType.equalsIgnoreCase("UDP"))
+        {
+            chargenServer = new ChargenUdpServer(portNum);
+        }
+
+        chargenServer.listen();
     }
 
     private static void usage() {
