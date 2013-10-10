@@ -37,12 +37,12 @@ public class ChargenServerDriver {
         /*TODO: ask Kreahling if we should exit or try to get the right server type*/
         if (args.length == 1)
         {
-            serverType = args[0];
             if (!serverType.equalsIgnoreCase("TCP") ||
                     !serverType.equalsIgnoreCase("UDP"))
             {
                 usage();
             }
+            serverType = args[0];
         }
 
         /* Two arguments set the port number as well */
@@ -50,6 +50,11 @@ public class ChargenServerDriver {
         {
             portNum = Integer.decode(args[1]);
         }
+        if (serverType.equalsIgnoreCase("TCP"))
+        {
+            ChargenServer chargenServer = new ChargenTcpServer(portNum,)
+        }
+
     }
 
     private static void usage() {

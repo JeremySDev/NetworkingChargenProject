@@ -14,7 +14,7 @@ public class NonAlphaNumericCharacterSource implements ChargenCharacterSource {
 
     private int placeInArray = 0;
 
-    private String data = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+    private String data = "!#$%&'()*+,-./:;<=>?@[]^_^`{|}~";
 
     public char getNextChar()
     {
@@ -25,7 +25,7 @@ public class NonAlphaNumericCharacterSource implements ChargenCharacterSource {
             placeInArray = 0;
         }
 
-        if (!(placeInArray > 29) && !(placeInArray < 0)
+        if (!(placeInArray > 29) && !(placeInArray < 0))
         {
             returnMe = data.charAt(placeInArray++);
         }
