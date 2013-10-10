@@ -7,6 +7,11 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
 /**
+ * AbstractChargenClient is an abstract class that implements the ChargenClient
+ * interface. This class includes attributes that are common to all Chargen
+ * client implementations, as well as protected methods that enable subclasses
+ * to access those attributes.
+ *
  * @author Jeremy Stilwell
  * @author Alisha Hayman
  * @version 10/8/13.
