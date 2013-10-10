@@ -26,8 +26,6 @@ public class AlphaNumericCharacterSource implements ChargenCharacterSource {
 
     public char getNextChar()
     {
-        char next = data[placeInArray];
-        placeInArray++;
-        return next;
+        return data[placeInArray++];
     }
 }

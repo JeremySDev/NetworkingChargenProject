@@ -11,9 +11,15 @@ import java.net.DatagramSocket;
  * @version 10/8/13.
  */
 public class NonAlphaNumericCharacterSource implements ChargenCharacterSource {
+    private int placeInArray = 0;
+
+    private char[] data = {
+            '!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.',
+            '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`'};
+
     public char getNextChar()
     {
-        char next = 'f';
-        return next;
+        return data[placeInArray++];
     }
+
 }
