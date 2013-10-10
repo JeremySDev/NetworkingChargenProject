@@ -31,17 +31,17 @@ public abstract class AbstractChargenServer implements ChargenServer {
     public AbstractChargenServer(ChargenCharacterSource source){}
     public AbstractChargenServer(int port, ChargenCharacterSource source){}
 
-    public int getPort()
+    protected int getPort()
     {
         return port;
     }
 
-    public ChargenCharacterSource getCharacterSource()
+    protected ChargenCharacterSource getCharacterSource()
     {
         return source;
     }
 
-    public void changeSource(ChargenCharacterSource source)
+    protected void changeSource(ChargenCharacterSource source)
     {
         this.source = source;
     }
