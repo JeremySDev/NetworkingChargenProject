@@ -16,11 +16,12 @@ import java.net.DatagramSocket;
  */
 public class DefactoChargenCharacterSource implements ChargenCharacterSource {
 
+    private int placeInArray = 0;
+
     String data = "!#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 
     public char getNextChar()
     {
-        char next = 'f';
-        return next;
+        return data.charAt(placeInArray++);
     }
 }
