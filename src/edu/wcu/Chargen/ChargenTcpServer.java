@@ -1,6 +1,10 @@
 package edu.wcu.Chargen;
 import edu.wcu.Chargen.ChargenCharacterSource;
 import edu.wcu.Chargen.AbstractChargenServer;
+
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -47,8 +51,22 @@ public class ChargenTcpServer extends AbstractChargenServer {
     }
 
     @Override
-    public void listen()
-    {
-
+    public void listen() throws IOException {
+        try
+        {
+            ServerSocket serverSocket = new ServerSocket(this.port);
+            Socket clientSocket = serverSocket.accept();
+            OutputStream outputStream = clientSocket.getOutputStream();
+            ObjectOutputStream objectOutputStream =
+                    new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject("stuff");  // send serilized payload
+            objectOutputStream.close();
+        }
+        catch (IOException ioe)
+        {
+            System.err.println("Unable to read data from an open socket.");
+            System.err.println(ioe.toString());
+            System.exit(1);
+        }
     }
 }

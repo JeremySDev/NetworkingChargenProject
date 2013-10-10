@@ -1,4 +1,5 @@
 package edu.wcu.Chargen;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -16,5 +17,5 @@ import java.net.DatagramSocket;
  */
 public interface ChargenServer {
     /* listen will listen for requests from clients. */
-    public void listen();
+    public void listen() throws IOException;
 }

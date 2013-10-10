@@ -1,5 +1,6 @@
 package edu.wcu.Chargen;
 
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -112,8 +113,7 @@ public abstract class AbstractChargenServer implements ChargenServer {
     /**
      * listen
      */
-    public void listen()
-    {
+    public void listen() throws IOException {
 
     }
 }
