@@ -16,6 +16,11 @@ import java.net.DatagramSocket;
  * @version 10/8/13.
  */
 public class ChargenUdpClient extends AbstractChargenClient {
+
+    public ChargenUdpClient(InetAddress host, int port) {
+        super(host, port);
+    }
+
     public void printToStream(PrintStream out)
     {
 

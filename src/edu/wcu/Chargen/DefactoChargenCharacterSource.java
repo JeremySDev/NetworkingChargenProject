@@ -18,6 +18,7 @@ public class DefactoChargenCharacterSource implements ChargenCharacterSource {
 
     public char getNextChar()
     {
-
+        char next = 'f';
+        return next;
     }
 }

@@ -1,5 +1,5 @@
-import edu.wcu.Chargen.ChargenCharacterSource;
-import edu.wcu.Chargen.ChargenServer;
+package edu.wcu.Chargen;
+
 import java.net.ServerSocket;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -23,29 +23,95 @@ import java.net.DatagramSocket;
  * @version 10/8/13.
  */
 public abstract class AbstractChargenServer implements ChargenServer {
+
+    /* The number of the port to be used */
     private int port;
+
+    /**/
     private ChargenCharacterSource source;
 
-    public AbstractChargenServer(){}
-    public AbstractChargenServer(int port){}
-    public AbstractChargenServer(ChargenCharacterSource source){}
-    public AbstractChargenServer(int port, ChargenCharacterSource source){}
+    /**
+     * AbstractChargenServer constructor this is the default constructor for the
+     * AbstractChargenServer class.
+     *
+     */
+    public AbstractChargenServer()
+    {
+        this.port = 19;
+        this.source = new DefactoChargenCharacterSource();
+    }
 
+    /**
+     * AbstractChargenServer constructor this constructor is used when the port
+     * number is provided.
+     *
+     * @param port - the port number to be used.
+     */
+    public AbstractChargenServer(int port)
+    {
+        this.port = port;
+        this.source = new DefactoChargenCharacterSource();
+    }
+
+    /**
+     * AbstractChargenServer constructor this constructor is used when the
+     * source is provided.
+     *
+     * @param source
+     */
+    public AbstractChargenServer(ChargenCharacterSource source)
+    {
+        this.port = 19;
+        this.source = source;
+    }
+
+    /**
+     * AbstractChargenServer constructor this constructor is used when the port
+     * number and source are provided
+     *
+     * @param port - the port number to be used.
+     * @param source
+     */
+    public AbstractChargenServer(int port, ChargenCharacterSource source)
+    {
+        this.port = port;
+        this.source = source;
+    }
+
+    /**
+     * getPort - returns the port number of the AbstractChargenServer.
+     * @return port - the port number
+     */
     protected int getPort()
     {
         return port;
     }
 
+    /**
+     * getCharacterSource - returns the ChargenCharacterSource of the
+     * AbstractChargenServer.
+     *
+     * @return source
+     */
     protected ChargenCharacterSource getCharacterSource()
     {
         return source;
     }
 
+    /**
+     * changeSource - allows for the modifcation of the source field in the
+     * AbstractChargenServer.
+     *
+     * @param source
+     */
     protected void changeSource(ChargenCharacterSource source)
     {
         this.source = source;
     }
 
+    /**
+     * listen
+     */
     public void listen()
     {
 

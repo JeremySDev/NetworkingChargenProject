@@ -13,6 +13,7 @@ import java.net.DatagramSocket;
 public class NumericCharacterSource implements ChargenCharacterSource {
     public char getNextChar()
     {
-
+        char next = 'f';
+        return next;
     }
 }
