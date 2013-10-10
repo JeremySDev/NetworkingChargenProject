@@ -10,5 +10,5 @@ import java.net.DatagramSocket;
  * @author Alisha Hayman
  * @version 10/8/13.
  */
-public class ChargenTcpClient {
+public class ChargenTcpClient extends AbstractChargenClient {
 }

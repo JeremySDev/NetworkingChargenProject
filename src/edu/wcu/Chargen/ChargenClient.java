@@ -1,4 +1,5 @@
 package edu.wcu.Chargen;
+import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -12,5 +13,5 @@ import java.net.DatagramSocket;
  * @version 10/8/13.
  */
 public interface ChargenClient {
-
+    public void printToStream(PrintStream out);
 }
