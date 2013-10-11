@@ -44,8 +44,8 @@ public class ChargenUdpClient extends AbstractChargenClient {
      * Data received from the remote host is printed to the specified
      * PrintStream.
      * @param out - The PrintStream to carry the server's response.
-     * @throws - SocketException when creating a new DatagramSocket.
-     * @throws - UnknownHostException if local host can't be resolved into an
+     * @throws SocketException - when creating a new DatagramSocket.
+     * @throws UnknownHostException - if local host can't be resolved into an
      * address.
      */
     public void printToStream(PrintStream out) throws SocketTimeoutException,
@@ -78,8 +78,8 @@ public class ChargenUdpClient extends AbstractChargenClient {
      * port number and using the local host address.
      * @param port - The given destination port number.
      * @return - A new DatagramSocket to be used to talk to the server.
-     * @throws - SocketException when creating a new DatagramSocket.
-     * @throws - UnknownHostException if local host can't be resolved into an
+     * @throws SocketException - when creating a new DatagramSocket.
+     * @throws UnknownHostException - if local host can't be resolved into an
      * address.
      */
     private DatagramSocket makeSocket(int port) throws SocketException, UnknownHostException
@@ -100,7 +100,7 @@ public class ChargenUdpClient extends AbstractChargenClient {
      * @param host - The IP address of the remote host.
      * @param port - The remote host's port number.
      * @return - A new DatagramPacket to use for communication.
-     * @throws - UnknownHostException if invalid information is given to the
+     * @throws UnknownHostException - if invalid information is given to the
      * packet.
      */
     private DatagramPacket makePacket(byte[] buffer, int length,
@@ -120,6 +120,9 @@ public class ChargenUdpClient extends AbstractChargenClient {
      * @param clientSocket - The socket used for client/server communications.
      * @param packet - The packet to be exchanged.
      * @param buffer - The buffer to hold received data.
+     * @throws SocketTimeoutException - if there
+     *
+     * @throws IOException - if unable to close
      */
     private void communicate(DatagramSocket clientSocket, DatagramPacket packet,
                              byte[] buffer) throws SocketTimeoutException,
