@@ -120,9 +120,10 @@ public class ChargenUdpClient extends AbstractChargenClient {
      * @param clientSocket - The socket used for client/server communications.
      * @param packet - The packet to be exchanged.
      * @param buffer - The buffer to hold received data.
-     * @throws SocketTimeoutException - if there
-     *
-     * @throws IOException - if unable to close
+     * @throws SocketTimeoutException - when the socket has timed out.
+     * @throws java.net.SocketException - when the receiving socket has
+     * encountered problems.
+     * @throws IOException - if the client and server communicated incorrectly.
      */
     private void communicate(DatagramSocket clientSocket, DatagramPacket packet,
                              byte[] buffer) throws SocketTimeoutException,

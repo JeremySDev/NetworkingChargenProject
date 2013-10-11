@@ -22,11 +22,11 @@ public interface ChargenClient {
      * Method used to print data received from the server into a given output
      * stream.
      * @param out - A given PrintStream used to contain server data to print.
-     * @throws SocketTimeoutException -
+     * @throws SocketTimeoutException - when the socket has timed out.
      * @throws SocketException - when creating a new DatagramSocket.
      * @throws UnknownHostException - if local host can't be resolved into an
      * address.
-     * @throws IOException
+     * @throws IOException - if the client and server communicated incorrectly.
      */
     public void printToStream(PrintStream out) throws SocketTimeoutException,
             SocketException, UnknownHostException, IOException;

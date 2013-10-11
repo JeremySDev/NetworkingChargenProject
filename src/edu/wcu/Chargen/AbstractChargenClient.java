@@ -69,6 +69,16 @@ public abstract class AbstractChargenClient implements ChargenClient {
         return this.port;
     }
 
+    /**
+     * Abstract method used to print data received from the server into a given
+     * output stream.
+     * @param out - A given PrintStream used to contain server data to print.
+     * @throws SocketTimeoutException - when the socket has timed out.
+     * @throws SocketException - when creating a new DatagramSocket.
+     * @throws UnknownHostException - if local host can't be resolved into an
+     * address.
+     * @throws IOException - if the client and server communicated incorrectly.
+     */
     @Override
     public abstract void printToStream(PrintStream out) throws SocketTimeoutException,
             SocketException, UnknownHostException, IOException;
