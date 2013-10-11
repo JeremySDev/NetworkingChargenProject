@@ -15,7 +15,7 @@ import java.net.*;
 public class ChargenUdpClient extends AbstractChargenClient {
 
     /** Time in milliseconds until timeout. */
-    private final int TIMEOUT = 5000;
+    private final int TIMEOUT = 500;
 
     /** Client UDP socket. */
     private DatagramSocket clientSocket;
