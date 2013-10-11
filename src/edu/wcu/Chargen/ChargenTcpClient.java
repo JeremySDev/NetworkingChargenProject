@@ -1,8 +1,5 @@
 package edu.wcu.Chargen;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Scanner;
@@ -64,7 +61,24 @@ public class ChargenTcpClient extends AbstractChargenClient {
      */
     public void printToStream(PrintStream out)
     {
-        //out.print();
+        Scanner outputFromServer = null;
+        try {
+            outputFromServer = new Scanner(new InputStreamReader
+                    (clientSocket.getInputStream()));
+        } catch (IOException e) {
+            System.err.println("Problem connecting client and server: " + e);
+            System.exit(1);
+        }
+
+        try {
+            out = new PrintStream(new String(outputFromServer.next()));
+        } catch (FileNotFoundException e) {
+            System.err.println("Problem connecting client and server: " + e);
+            System.exit(1);
+        }
+        }
+
+        System.out.println(out);
     }
 
 }
