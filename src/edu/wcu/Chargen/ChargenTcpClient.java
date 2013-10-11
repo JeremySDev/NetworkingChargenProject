@@ -1,6 +1,8 @@
 package edu.wcu.Chargen;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.net.InetAddress;
+import java.net.Socket;
 
 /**
  * ChargenTcpClient is a class that extends AbstractChargenClient and provides
@@ -19,9 +21,16 @@ public class ChargenTcpClient extends AbstractChargenClient {
 
     public void printToStream(PrintStream out)
     {
+        try
+        {
         Socket clientSocket = new Socket();
         Socket serverSocket = new Socket(this.host, this.port);
-
+        }
+        catch(IOException e)
+        {
+            System.err.println("Problem connecting client and server: " + e);
+            System.exit(1);
+        }
 
     }
 
