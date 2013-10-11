@@ -52,10 +52,20 @@ public class ChargenUdpClient extends AbstractChargenClient {
         //use getHost() and getPort();
 
         // call helper method to create the clientSocket
-        clientSocket = makeSocket(getPort());
+        try {
+            clientSocket = makeSocket(getPort());
+        } catch (SocketException e) {
+            e.printStackTrace();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
 
         // call helper method to create the packet
-        packet = makePacket(buffer, buffer.length, getHost(), getPort());
+        try {
+            packet = makePacket(buffer, buffer.length, getHost(), getPort());
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
 
         // call helper to send and receive data from server (communicate)
         // received data is stored in buffer
