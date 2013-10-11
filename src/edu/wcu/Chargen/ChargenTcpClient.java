@@ -28,7 +28,7 @@ public class ChargenTcpClient extends AbstractChargenClient {
 
     /**
      *
-     * @param out
+     * @param out - a PrintStream object
      */
     public void printToStream(PrintStream out)
     {
