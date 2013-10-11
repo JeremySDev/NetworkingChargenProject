@@ -4,10 +4,7 @@ import edu.wcu.Chargen.AbstractChargenServer;
 
 import java.io.*;
 import java.net.ServerSocket;
-import java.net.InetAddress;
 import java.net.Socket;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 
 /**
  * ChargenTcpServer is a class that extends AbstractChargenServer and provides
@@ -19,13 +16,13 @@ import java.net.DatagramSocket;
  * @author Alisha Hayman
  * @version 10/8/13.
  */
-public class ChargenTcpServer extends AbstractChargenServer {
+@SuppressWarnings("FieldCanBeLocal") public class ChargenTcpServer extends AbstractChargenServer {
 
     private static final int DEFAULT_PORT = 19;
 
-    private int port;
+    private final int port;
 
-    private ChargenCharacterSource source;
+    @SuppressWarnings("FieldCanBeLocal") private final ChargenCharacterSource source;
 
     public ChargenTcpServer()
     {
@@ -49,7 +46,7 @@ public class ChargenTcpServer extends AbstractChargenServer {
     }
 
     @Override
-    public void listen() throws IOException {
+    public void listen() {
         String clientSentence;
         try
         {
@@ -61,11 +58,11 @@ public class ChargenTcpServer extends AbstractChargenServer {
 
 
 
-            BufferedReader inFromClient = new BufferedReader(
+            /*BufferedReader inFromClient = new BufferedReader(
                     new InputStreamReader(clientSocket.getInputStream()));
             DataOutputStream outToClient = new DataOutputStream(clientSocket.getOutputStream());
             clientSentence = inFromClient.readLine();
-            System.out.println("Received: " + clientSentence);
+            System.out.println("Received: " + clientSentence);*/
 
         }
         catch (IOException ioe)

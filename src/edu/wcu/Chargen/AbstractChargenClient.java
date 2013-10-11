@@ -1,10 +1,6 @@
 package edu.wcu.Chargen;
 import java.io.PrintStream;
-import java.net.ServerSocket;
 import java.net.InetAddress;
-import java.net.Socket;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 
 /**
  * AbstractChargenClient is an abstract class that implements the ChargenClient
@@ -16,7 +12,7 @@ import java.net.DatagramSocket;
  * @author Alisha Hayman
  * @version 10/8/13.
  */
-public abstract class AbstractChargenClient implements ChargenClient {
+@SuppressWarnings("WeakerAccess") public abstract class AbstractChargenClient implements ChargenClient {
 
     private InetAddress host;
 

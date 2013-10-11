@@ -18,7 +18,7 @@ import java.net.*;
  * @author Alisha Hayman
  * @version 10/8/13.
  */
-public class ChargenClientDriver {
+@SuppressWarnings("ConstantConditions") public class ChargenClientDriver {
     public static void main(String[] args) throws UnknownHostException {
         /* default "well-known" chargen port number */
         int portNum = 19;
@@ -46,12 +46,12 @@ public class ChargenClientDriver {
         /* Take the two mandatory arguments to set the server type and host */
         if (args.length >= 2)
         {
-            if (!serverType.equalsIgnoreCase("TCP") ||
-                    !serverType.equalsIgnoreCase("UDP"))
+            serverType = args[0];
+            if (!(serverType.equalsIgnoreCase("TCP")) ||
+                    !(serverType.equalsIgnoreCase("UDP")))
             {
                 usage();
             }
-            serverType = args[0];
             hostName = args[1];
         }
 
@@ -85,6 +85,7 @@ public class ChargenClientDriver {
 
         if (chargenClient != null)
         {
+            System.out.println("stuff");
             //chargenClient.printToStream();
         }
     }

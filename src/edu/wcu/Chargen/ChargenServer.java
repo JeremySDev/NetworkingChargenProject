@@ -1,10 +1,4 @@
 package edu.wcu.Chargen;
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 
 /**
  * ChargenServer is the interface to a chargen server implementation. The
@@ -17,5 +11,5 @@ import java.net.DatagramSocket;
  */
 public interface ChargenServer {
     /* listen will listen for requests from clients. */
-    public void listen() throws IOException;
+    public void listen();
 }

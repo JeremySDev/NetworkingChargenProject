@@ -1,12 +1,5 @@
 package edu.wcu.Chargen;
 
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-
 
 /**
  * AbstractChargenServer is an abstract class that implements the ChargenServer
@@ -26,7 +19,7 @@ import java.net.DatagramSocket;
 public abstract class AbstractChargenServer implements ChargenServer {
 
     /* The number of the port to be used */
-    private int port;
+    private final int port;
 
     /**/
     private ChargenCharacterSource source;
@@ -58,7 +51,7 @@ public abstract class AbstractChargenServer implements ChargenServer {
      * AbstractChargenServer constructor this constructor is used when the
      * source is provided.
      *
-     * @param source
+     * @param source - stuff
      */
     public AbstractChargenServer(ChargenCharacterSource source)
     {
@@ -71,7 +64,7 @@ public abstract class AbstractChargenServer implements ChargenServer {
      * number and source are provided
      *
      * @param port - the port number to be used.
-     * @param source
+     * @param source  - stuff
      */
     public AbstractChargenServer(int port, ChargenCharacterSource source)
     {
@@ -92,7 +85,7 @@ public abstract class AbstractChargenServer implements ChargenServer {
      * getCharacterSource - returns the ChargenCharacterSource of the
      * AbstractChargenServer.
      *
-     * @return source
+     * @return source - stuff
      */
     protected ChargenCharacterSource getCharacterSource()
     {
@@ -100,10 +93,10 @@ public abstract class AbstractChargenServer implements ChargenServer {
     }
 
     /**
-     * changeSource - allows for the modifcation of the source field in the
+     * changeSource - allows for the modification of the source field in the
      * AbstractChargenServer.
      *
-     * @param source
+     * @param source - stuff
      */
     protected void changeSource(ChargenCharacterSource source)
     {
@@ -113,7 +106,7 @@ public abstract class AbstractChargenServer implements ChargenServer {
     /**
      * listen
      */
-    public void listen() throws IOException {
+    public void listen() {
 
     }
 }

@@ -1,10 +1,5 @@
 package edu.wcu.Chargen;
 import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 
 /**
  * ChargenServerDriver provides the entry point for this application. It has
@@ -40,12 +35,12 @@ public class ChargenServerDriver {
         /* Only one arg then set the server type */
         if (args.length == 1)
         {
+            serverType = args[0];
             if (!serverType.equalsIgnoreCase("TCP") ||
                     !serverType.equalsIgnoreCase("UDP"))
             {
                 usage();
             }
-            serverType = args[0];
         }
 
         /* Two arguments set the port number as well */

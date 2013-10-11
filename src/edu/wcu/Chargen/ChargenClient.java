@@ -1,10 +1,5 @@
 package edu.wcu.Chargen;
 import java.io.PrintStream;
-import java.net.ServerSocket;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 
 /**
  * ChargenClient is the interface to a chargen client implementation. The

@@ -1,9 +1,4 @@
 package edu.wcu.Chargen;
-import java.net.ServerSocket;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 
 /**
  * The Chargen RFC does not specify the format of the character sequence
