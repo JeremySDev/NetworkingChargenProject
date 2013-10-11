@@ -19,9 +19,27 @@ public class ChargenTcpClient extends AbstractChargenClient {
 
     public void printToStream(PrintStream out)
     {
+        try
+        {
         Socket clientSocket = new Socket();
         Socket serverSocket = new Socket(this.host, this.port);
-
+        }
+        catch(IOException e)
+        {
+            System.err.println("Problems Creating Sockets: " + e);
+            System.exit(1);
+        }
+        /* Try to connect to the server socket on polaris */
+        try
+        {
+            /* Connect the client and server socket */
+            clientSocket.connect(serverSocket.getRemoteSocketAddress());
+        }
+        catch(IOException e)
+        {
+            System.err.println("Problem connecting client and server: " + e);
+            System.exit(1);
+        }
 
     }
 
