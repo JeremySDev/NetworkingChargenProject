@@ -32,7 +32,7 @@ public class ChargenClientDriver {
         String hostName = null;
 
         /* Flag for which CharacterSource our chargen server needs to use */
-        String chargenFlag = null;
+        String chargenFlag = "<CR><LF>";
 
         /* Declaration of a ChargenClient */
         ChargenClient chargenClient = null;

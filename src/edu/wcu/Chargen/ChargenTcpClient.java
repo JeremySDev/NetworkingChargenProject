@@ -60,7 +60,7 @@ public class ChargenTcpClient extends AbstractChargenClient {
      */
     public void printToStream(PrintStream out)
     {
-
+        //out.print();
     }
 
 }

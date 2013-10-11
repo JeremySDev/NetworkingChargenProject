@@ -1,6 +1,4 @@
 package edu.wcu.Chargen;
-import edu.wcu.Chargen.ChargenCharacterSource;
-import edu.wcu.Chargen.AbstractChargenServer;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -16,13 +14,13 @@ import java.net.Socket;
  * @author Alisha Hayman
  * @version 10/8/13.
  */
-@SuppressWarnings("FieldCanBeLocal") public class ChargenTcpServer extends AbstractChargenServer {
+public class ChargenTcpServer extends AbstractChargenServer {
 
     private static final int DEFAULT_PORT = 19;
 
     private final int port;
 
-    @SuppressWarnings("FieldCanBeLocal") private final ChargenCharacterSource source;
+    private final ChargenCharacterSource source;
 
     public ChargenTcpServer()
     {
