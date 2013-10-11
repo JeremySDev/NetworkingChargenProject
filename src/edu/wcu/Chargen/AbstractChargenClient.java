@@ -12,19 +12,37 @@ import java.net.InetAddress;
  * @author Alisha Hayman
  * @version 10/8/13.
  */
-@SuppressWarnings("WeakerAccess") public abstract class AbstractChargenClient implements ChargenClient {
-
+public abstract class AbstractChargenClient implements ChargenClient {
+    /* The InetAddress of the host */
     private InetAddress host;
 
+    /* The port number to connect to on the host */
     private int port;
 
+    /**
+     * Constructor for the AbstractChargenClient that takes accepts the host's
+     * address.
+     *
+     * @param host - the host's InetAddress
+     */
     public AbstractChargenClient(InetAddress host)
     {
-
+        this(19, host);
     }
 
+
+    /**
+     * Constructor for the AbstractChargenClient that takes accepts the host's
+     * address.
+     *
+     * @param host - the host's InetAddress.
+     * @param port
+     *
+     */
     public AbstractChargenClient(InetAddress host, int port)
     {
+        this.port = port;
+        this.host = host;
 
     }
 
