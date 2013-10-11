@@ -25,7 +25,7 @@ public class ChargenServerDriver {
         int portNum = 19;
 
         /* Server type TCP of UDP*/
-        String serverType;
+        String serverType = null;
 
         ChargenServer chargenServer = null;
 

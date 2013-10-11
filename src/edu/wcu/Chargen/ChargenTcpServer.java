@@ -2,9 +2,7 @@ package edu.wcu.Chargen;
 import edu.wcu.Chargen.ChargenCharacterSource;
 import edu.wcu.Chargen.AbstractChargenServer;
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -52,15 +50,23 @@ public class ChargenTcpServer extends AbstractChargenServer {
 
     @Override
     public void listen() throws IOException {
+        String clientSentence;
         try
         {
+            /* Make a connection to a client socket */
             ServerSocket serverSocket = new ServerSocket(this.port);
             Socket clientSocket = serverSocket.accept();
-            OutputStream outputStream = clientSocket.getOutputStream();
-            ObjectOutputStream objectOutputStream =
-                    new ObjectOutputStream(outputStream);
-            objectOutputStream.writeObject("stuff");  // send serilized payload
-            objectOutputStream.close();
+            /* get what type of Character source they want */
+
+
+
+
+            BufferedReader inFromClient = new BufferedReader(
+                    new InputStreamReader(clientSocket.getInputStream()));
+            DataOutputStream outToClient = new DataOutputStream(clientSocket.getOutputStream());
+            clientSentence = inFromClient.readLine();
+            System.out.println("Received: " + clientSentence);
+
         }
         catch (IOException ioe)
         {

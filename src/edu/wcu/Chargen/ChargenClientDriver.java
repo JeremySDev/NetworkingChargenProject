@@ -1,9 +1,5 @@
 package edu.wcu.Chargen;
-import java.net.ServerSocket;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
+import java.net.*;
 
 /**
  * ChargenClientDriver is the entry point of the application. It includes one
@@ -23,8 +19,78 @@ import java.net.DatagramSocket;
  * @version 10/8/13.
  */
 public class ChargenClientDriver {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws UnknownHostException {
+        /* default "well-known" chargen port number */
+        int portNum = 19;
 
+        /* Server type TCP of UDP*/
+        String serverType = null;
+
+        /* The host's name in String form */
+        String hostName = null;
+
+        /* Flag for which CharacterSource our chargen server needs to use */
+        String chargenFlag = null;
+
+        /* Declaration of a ChargenClient */
+        ChargenClient chargenClient = null;
+
+        /* Not enough or too many cmd line args call usage */
+        if (args.length == 0 || args.length >= 4)
+        {
+            usage();
+        }
+
+
+        /* TODO: ask Kreahling if we should exit or try to get the right server type */
+        /* Take the two mandatory arguments to set the server type and host */
+        if (args.length >= 2)
+        {
+            if (!serverType.equalsIgnoreCase("TCP") ||
+                    !serverType.equalsIgnoreCase("UDP"))
+            {
+                usage();
+            }
+            serverType = args[0];
+            hostName = args[1];
+        }
+
+        /* if there is a third arg set that as the port number */
+        if (args.length >= 3)
+        {
+            portNum = Integer.decode(args[2]);
+        }
+
+        /* if there is a third arg set that as the flag for our chargen server*/
+        if (args.length >= 4)
+        {
+            chargenFlag = args[3];
+        }
+
+        /* Check what the client type needs to be */
+        if (serverType.equalsIgnoreCase("TCP"))
+        {
+            /**
+             *  initialize the chargenClient by creating an InetAddress from the
+             *  hostname given
+             */
+            chargenClient = new ChargenTcpClient(InetAddress.getByName(hostName), portNum);
+        }
+        else if (serverType.equalsIgnoreCase("UDP"))
+        {
+            chargenClient = new ChargenUdpClient(InetAddress.getByName(hostName), portNum);
+        }
+
+        if (chargenClient != null)
+        {
+            //chargenClient.printToStream();
+        }
+    }
+
+    private static void usage() {
+        System.err.println(
+                "usage: java ChargenServerDriver <TCP or UDP> <hostname> " +
+                        "[port number] [chargen server flag]");
+        System.exit(1);
     }
 }
