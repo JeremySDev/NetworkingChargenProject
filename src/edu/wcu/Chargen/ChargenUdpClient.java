@@ -51,10 +51,6 @@ public class ChargenUdpClient extends AbstractChargenClient {
     public void printToStream(PrintStream out) throws SocketTimeoutException,
             SocketException, UnknownHostException, IOException
     {
-        //TODO: Do legit client things and use helper methods
-        // Utilize super.printToStream?
-        //use getHost() and getPort();
-
         // call helper method to create the clientSocket
         clientSocket = makeSocket(getPort());
 
@@ -65,12 +61,16 @@ public class ChargenUdpClient extends AbstractChargenClient {
         // received data is stored in buffer
         communicate(clientSocket, packet, buffer);
 
+        // place received data from buffer into the PrintStream
+        out = new PrintStream(new String(packet.getData()));
+
+        // TODO: correct place? Main?
         // call helper method to close the socket
         close(clientSocket);
 
-        // RETURN the data from the server using the out PrintStream
-        // try with resources to close stream?
-        // TODO:
+        // print the data from the server using the out PrintStream
+        // TODO: close in main?
+        System.out.println(out);
     }
 
     /**
