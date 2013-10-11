@@ -19,7 +19,7 @@ public class ChargenServerDriver {
         /* default "well-known" chargen port number */
         int portNum = 19;
 
-        /* Server type TCP of UDP*/
+        /* Server type of TCP or UDP*/
         String serverType = null;
 
         /* Declaration of a ChargenServer */
