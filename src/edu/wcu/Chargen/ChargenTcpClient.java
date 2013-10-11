@@ -34,8 +34,17 @@ public class ChargenTcpClient extends AbstractChargenClient {
     {
         try
         {
+            /* make a socket on the client side */
             Socket clientSocket = new Socket();
+            /* make a socket on the server side based on the host and port */
             Socket serverSocket = new Socket(this.getHost(), this.getPort());
+
+            /**
+             * TODO: unsure if we need to check if we are connecting to a
+             * server (like polaris) or our own
+             */
+            /* connect the two sockets */
+            clientSocket.connect(serverSocket.getRemoteSocketAddress());
         }
         catch(IOException e)
         {
