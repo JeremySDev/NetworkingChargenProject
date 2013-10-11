@@ -1,6 +1,10 @@
 package edu.wcu.Chargen;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.io.PrintStream;
 
@@ -22,7 +26,7 @@ import java.io.PrintStream;
  * @version 10/8/13.
  */
 public class ChargenClientDriver {
-    public static void main(String[] args) throws UnknownHostException {
+    public static void main(String[] args) throws IOException {
         /* default "well-known" chargen port number */
         int portNum = 19;
 
@@ -85,8 +89,8 @@ public class ChargenClientDriver {
 
         if (chargenClient != null)
         {
-            //System.out.println("stuff");
-            chargenClient.printToStream();
+            PrintStream out = new PrintStream("null");
+            chargenClient.printToStream(out);
         }
     }
 
