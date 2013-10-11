@@ -1,4 +1,5 @@
 package edu.wcu.Chargen;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.InetAddress;
@@ -26,11 +27,7 @@ public class ChargenTcpClient extends AbstractChargenClient {
         super(host, port);
     }
 
-    /**
-     *
-     * @param out - a PrintStream object
-     */
-    public void printToStream(PrintStream out)
+    private void helper()
     {
         try
         {
@@ -45,12 +42,24 @@ public class ChargenTcpClient extends AbstractChargenClient {
              */
             /* connect the two sockets */
             clientSocket.connect(serverSocket.getRemoteSocketAddress());
+
+            DataOutputStream outputToServer = new DataOutputStream
+                    (clientSocket.getOutputStream());
         }
         catch(IOException e)
         {
             System.err.println("Problem connecting client and server: " + e);
             System.exit(1);
         }
+
+    }
+
+    /**
+     *
+     * @param out - a PrintStream object
+     */
+    public void printToStream(PrintStream out)
+    {
 
     }
 
