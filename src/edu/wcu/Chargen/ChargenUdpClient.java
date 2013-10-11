@@ -1,7 +1,7 @@
 package edu.wcu.Chargen;
 import java.io.IOException;
 import java.io.PrintStream;
-/* TODO: change this */
+//TODO: CHANGE THIS
 import java.net.*;
 
 /**
@@ -16,7 +16,7 @@ import java.net.*;
 public class ChargenUdpClient extends AbstractChargenClient {
 
     /** Time in milliseconds until timeout. */
-    private final int TIMEOUT = 500;
+    private final int TIMEOUT = 5000;
 
     /** Client UDP socket. */
     private DatagramSocket clientSocket;
@@ -67,7 +67,7 @@ public class ChargenUdpClient extends AbstractChargenClient {
 
         // TODO: correct place? Main?
         // call helper method to close the socket
-        close(clientSocket);
+        clientSocket.close();
 
         // print the data from the server using the out PrintStream
         // TODO: print and close in main?
@@ -138,14 +138,5 @@ public class ChargenUdpClient extends AbstractChargenClient {
 
         // receive a DatagramPacket from the server
         clientSocket.receive(packet);
-    }
-
-    /**
-     * Helper method closes a given socket.
-     * @param clientSocket - The specified DatagramSocket to close.
-     */
-    private void close(DatagramSocket clientSocket)
-    {
-        clientSocket.close();
     }
 }
