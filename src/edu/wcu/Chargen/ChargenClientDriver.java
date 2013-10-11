@@ -25,7 +25,7 @@ public class ChargenClientDriver {
         /* default "well-known" chargen port number */
         int portNum = 19;
 
-        /* Server type TCP of UDP*/
+        /* Client type of TCP or UDP */
         String clientType = null;
 
         /* The host's name in String form */
