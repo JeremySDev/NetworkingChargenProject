@@ -41,7 +41,6 @@ import java.net.*;
             usage();
         }
 
-
         /* TODO: ask Kreahling if we should exit or try to get the right server type */
         /* Take the two mandatory arguments to set the server type and host */
         if (args.length >= 2)
