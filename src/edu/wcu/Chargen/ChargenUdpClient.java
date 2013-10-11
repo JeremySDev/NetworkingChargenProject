@@ -98,6 +98,13 @@ public class ChargenUdpClient extends AbstractChargenClient {
                                       InetAddress host, int port)
             throws UnknownHostException
     {
+        DatagramPacket packet = null;
 
+        // create new packet
+        packet = new DatagramPacket(buffer, length, host, port);
+        return packet;
     }
+
+    /** TODO: */
+    private void communicate(clientSocket, packet, buffer)
 }
