@@ -74,11 +74,13 @@ public class ChargenClientDriver {
              *  initialize the chargenClient by creating an InetAddress from the
              *  hostname given
              */
-            chargenClient = new ChargenTcpClient(InetAddress.getByName(hostName), portNum);
+            chargenClient = new ChargenTcpClient(
+                    InetAddress.getByName(hostName), portNum);
         }
         else if (serverType.equalsIgnoreCase("UDP"))
         {
-            chargenClient = new ChargenUdpClient(InetAddress.getByName(hostName), portNum);
+            chargenClient = new ChargenUdpClient(
+                    InetAddress.getByName(hostName), portNum);
         }
 
         if (chargenClient != null)

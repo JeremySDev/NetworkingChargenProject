@@ -27,6 +27,7 @@ public class ChargenServerDriver {
         /* Server type TCP of UDP*/
         String serverType = null;
 
+        /* Declaration of a ChargenServer */
         ChargenServer chargenServer = null;
 
         /* Not enough or too many cmd line args call usage */
@@ -35,8 +36,8 @@ public class ChargenServerDriver {
             usage();
         }
 
-        /* Only one arg then set the server type */
         /* TODO: ask Kreahling if we should exit or try to get the right server type */
+        /* Only one arg then set the server type */
         if (args.length == 1)
         {
             if (!serverType.equalsIgnoreCase("TCP") ||
