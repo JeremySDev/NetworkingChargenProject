@@ -50,18 +50,20 @@ public class ChargenUdpClient extends AbstractChargenClient {
         //use getHost() and getPort();
 
         // call helper method to create the clientSocket
-        makeSocket(getPort());
+        clientSocket = makeSocket(getPort());
 
         // call helper method to create the packet
-        makePacket(buffer, buffer.length, getHost(), getPort());
+        packet = makePacket(buffer, buffer.length, getHost(), getPort());
 
         // call helper to send and receive data from server (communicate)
         communicate(clientSocket, packet, buffer);
 
         // print the data from the server using the out PrintStream
-        // TODO: cocaine
+        // TODO:
 
         // call helper method to close the socket and stream
-
+        close(clientSocket);
     }
+
+    private
 }
