@@ -1,10 +1,6 @@
 package edu.wcu.Chargen;
 import java.io.PrintStream;
-import java.net.DatagramSocket;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.SocketException;
-import java.net.UnknownHostException;
+import java.net.*;
 
 /**
  * ChargenUDPClient is a class that extends AbstractChargenClient and provides
@@ -44,28 +40,22 @@ public class ChargenUdpClient extends AbstractChargenClient {
      * Data received from the remote host is printed to the specified
      * PrintStream.
      * @param out - The PrintStream to carry the server's response.
+     * @throws - SocketException when creating a new DatagramSocket.
+     * @throws - UnknownHostException if local host can't be resolved into an
+     * address.
      */
-    public void printToStream(PrintStream out)
+    public void printToStream(PrintStream out) throws SocketException,
+            UnknownHostException
     {
         //TODO: Do legit client things and use helper methods
         // Utilize super.printToStream?
         //use getHost() and getPort();
 
         // call helper method to create the clientSocket
-        try {
-            clientSocket = makeSocket(getPort());
-        } catch (SocketException e) {
-            e.printStackTrace();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }
+        clientSocket = makeSocket(getPort());
 
         // call helper method to create the packet
-        try {
-            packet = makePacket(buffer, buffer.length, getHost(), getPort());
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }
+        packet = makePacket(buffer, buffer.length, getHost(), getPort());
 
         // call helper to send and receive data from server (communicate)
         // received data is stored in buffer
@@ -81,15 +71,13 @@ public class ChargenUdpClient extends AbstractChargenClient {
     /**
      * Helper method that creates and returns a new DatagramSocket using a given
      * port number and using the local host address.
-     *
      * @param port - The given destination port number.
      * @return - A new DatagramSocket to be used to talk to the server.
-     * @throws SocketException - when creating a new DatagramSocket.
-     * @throws UnknownHostException - if local host can't be resolved into an
+     * @throws - SocketException when creating a new DatagramSocket.
+     * @throws - UnknownHostException if local host can't be resolved into an
      * address.
      */
-    private DatagramSocket makeSocket(int port) throws SocketException,
-            UnknownHostException
+    private DatagramSocket makeSocket(int port) throws SocketException, UnknownHostException
     {
         DatagramSocket newSocket = null;
 
@@ -102,13 +90,12 @@ public class ChargenUdpClient extends AbstractChargenClient {
     /**
      * Helper method creates a new DatagramPacket to send between the client
      * and server during communication.
-     *
      * @param buffer - An array of bytes to hold sent and received data.
      * @param length - The length of the buffer.
      * @param host - The IP address of the remote host.
      * @param port - The remote host's port number.
      * @return - A new DatagramPacket to use for communication.
-     * @throws UnknownHostException - if invalid information is given to the
+     * @throws - UnknownHostException if invalid information is given to the
      * packet.
      */
     private DatagramPacket makePacket(byte[] buffer, int length,
@@ -122,16 +109,16 @@ public class ChargenUdpClient extends AbstractChargenClient {
         return packet;
     }
 
-    /* TODO: */
+    /** TODO: */
     private void communicate(DatagramSocket clientSocket, DatagramPacket packet,
                              byte[] buffer)
     {
 
     }
 
-    /* TODO: */
+    /** TODO: */
     private void close(DatagramSocket clientSocket)
     {
-
+        clientSocket.close();
     }
 }
