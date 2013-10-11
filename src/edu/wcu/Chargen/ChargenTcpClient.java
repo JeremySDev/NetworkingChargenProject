@@ -31,7 +31,33 @@ public class ChargenTcpClient extends AbstractChargenClient {
         super(host, port);
     }
 
-    private void helper()
+    /**
+     *
+     * @param out - a PrintStream object
+     */
+    public void printToStream(PrintStream out)
+    {
+        socketHelper();
+        Scanner outputFromServer = null;
+        try {
+            outputFromServer = new Scanner(new InputStreamReader
+                    (clientSocket.getInputStream()));
+        } catch (IOException e) {
+            System.err.println("Problem connecting client and server: " + e);
+            System.exit(1);
+        }
+
+        try {
+            out = new PrintStream(outputFromServer.next());
+        } catch (FileNotFoundException e) {
+            System.err.println("Problem connecting client and server: " + e);
+            System.exit(1);
+        }
+
+        System.out.println(out);
+    }
+
+    private void socketHelper()
     {
         try
         {
@@ -50,32 +76,6 @@ public class ChargenTcpClient extends AbstractChargenClient {
             System.err.println("Problem connecting client and server: " + e);
             System.exit(1);
         }
-    }
-
-    /**
-     *
-     * @param out - a PrintStream object
-     */
-    public void printToStream(PrintStream out)
-    {
-        Scanner outputFromServer = null;
-
-        try {
-            outputFromServer = new Scanner(new InputStreamReader
-                    (clientSocket.getInputStream()));
-        } catch (IOException e) {
-            System.err.println("Problem connecting client and server: " + e);
-            System.exit(1);
-        }
-
-        try {
-            out = new PrintStream(new String(outputFromServer.next()));
-        } catch (FileNotFoundException e) {
-            System.err.println("Problem connecting client and server: " + e);
-            System.exit(1);
-        }
-
-        System.out.println(out);
     }
 
 }
