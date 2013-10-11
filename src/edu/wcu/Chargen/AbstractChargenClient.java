@@ -66,8 +66,5 @@ public abstract class AbstractChargenClient implements ChargenClient {
     }
 
     @Override
-    public void printToStream(PrintStream out)
-    {
-
-    }
+    public abstract void printToStream(PrintStream out);
 }

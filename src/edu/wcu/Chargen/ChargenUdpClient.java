@@ -69,7 +69,7 @@ public class ChargenUdpClient extends AbstractChargenClient {
         close(clientSocket);
 
         // print the data from the server using the out PrintStream
-        // TODO: close in main?
+        // TODO: print and close in main?
         System.out.println(out);
     }
 
