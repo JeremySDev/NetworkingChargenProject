@@ -1,5 +1,7 @@
 package edu.wcu.Chargen;
 import java.io.PrintStream;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 /**
@@ -13,6 +15,15 @@ import java.net.InetAddress;
  */
 public class ChargenUdpClient extends AbstractChargenClient {
 
+    /** Client UDP socket. */
+    private DatagramSocket clientSocket;
+
+    /** DatagramPacket to hold information to send to server. */
+    private DatagramPacket packet;
+
+    /** The buffer array of bytes to send. */
+    private byte[] buffer;
+
     /**
      * Constructor initializes fields to a given destination host address and
      * port number.
@@ -21,6 +32,9 @@ public class ChargenUdpClient extends AbstractChargenClient {
      */
     public ChargenUdpClient(InetAddress host, int port) {
         super(host, port);
+        clientSocket = null;
+        packet = null;
+        buffer = new byte[256];
     }
 
     /**
@@ -31,6 +45,16 @@ public class ChargenUdpClient extends AbstractChargenClient {
      */
     public void printToStream(PrintStream out)
     {
+        //TODO: Do legit client things and use helper methods
+        // Utilize super.printToStream?
+        //use getHost() and getPort();
 
+        // call helper method to create the clientSocket
+        //TODO:
+
+        // call helper method to create the packet
+        //TODO:
+
+        //
     }
 }
