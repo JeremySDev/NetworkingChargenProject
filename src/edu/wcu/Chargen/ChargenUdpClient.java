@@ -64,16 +64,13 @@ public class ChargenUdpClient extends AbstractChargenClient {
         // received data is stored in buffer
         communicate(clientSocket, packet, buffer);
 
-        // place received data from buffer into the PrintStream
-        // TODO:
-        out = new PrintStream();
-
         // print the data from the server using the out PrintStream
         // TODO: print and close in main?
-        out.println(packet.getData());
+        out.println(packet.getData().toString());
 
         // TODO: correct place? Main?
-        // call helper method to close the socket
+        // close the socket and stream
+        out.close();
         clientSocket.close();
     }
 
