@@ -106,5 +106,15 @@ public class ChargenUdpClient extends AbstractChargenClient {
     }
 
     /** TODO: */
-    private void communicate(clientSocket, packet, buffer)
+    private void communicate(DatagramSocket clientSocket, DatagramPacket packet,
+                             byte[] buffer)
+    {
+
+    }
+
+    /** TODO: */
+    private void close(DatagramSocket clientSocket)
+    {
+
+    }
 }
