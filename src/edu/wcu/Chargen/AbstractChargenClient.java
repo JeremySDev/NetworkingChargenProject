@@ -58,7 +58,7 @@ public abstract class AbstractChargenClient implements ChargenClient {
     /**
      * getPort - returns the port field of the AbstractChargenClient.
      *
-     * @return port - the number of the port being
+     * @return port - the number of the port being used
      */
     protected int getPort()
     {
