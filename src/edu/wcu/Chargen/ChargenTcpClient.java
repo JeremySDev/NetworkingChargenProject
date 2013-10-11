@@ -19,6 +19,9 @@ public class ChargenTcpClient extends AbstractChargenClient {
 
     public void printToStream(PrintStream out)
     {
+        Socket clientSocket = new Socket();
+        Socket serverSocket = new Socket(this.host, this.port);
+
 
     }
 
