@@ -1,6 +1,5 @@
 package edu.wcu.Chargen;
 
-
 /**
  * AbstractChargenServer is an abstract class that implements the ChargenServer
  * interface. This class includes attributes that are common to all Chargen

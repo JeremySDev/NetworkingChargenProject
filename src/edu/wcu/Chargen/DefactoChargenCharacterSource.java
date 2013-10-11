@@ -13,7 +13,8 @@ public class DefactoChargenCharacterSource implements ChargenCharacterSource {
 
     private int placeInArray = 0;
 
-    final String data = "!#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+    private final String data = "!#$%&'()*+,-./0123456789:;<=>?@ABCDEF" +
+            "GHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 
     public char getNextChar()
     {
