@@ -1,4 +1,5 @@
 package edu.wcu.Chargen;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.net.*;
 
@@ -12,6 +13,9 @@ import java.net.*;
  * @version 10/8/13.
  */
 public class ChargenUdpClient extends AbstractChargenClient {
+
+    /** Time in milliseconds until timeout. */
+    private final int TIMEOUT = 5000;
 
     /** Client UDP socket. */
     private DatagramSocket clientSocket;
@@ -44,8 +48,8 @@ public class ChargenUdpClient extends AbstractChargenClient {
      * @throws - UnknownHostException if local host can't be resolved into an
      * address.
      */
-    public void printToStream(PrintStream out) throws SocketException,
-            UnknownHostException
+    public void printToStream(PrintStream out) throws SocketTimeoutException,
+            SocketException, UnknownHostException, IOException
     {
         //TODO: Do legit client things and use helper methods
         // Utilize super.printToStream?
@@ -61,11 +65,12 @@ public class ChargenUdpClient extends AbstractChargenClient {
         // received data is stored in buffer
         communicate(clientSocket, packet, buffer);
 
-        // print the data from the server using the out PrintStream
-        // TODO:
-
-        // call helper method to close the socket and stream
+        // call helper method to close the socket
         close(clientSocket);
+
+        // RETURN the data from the server using the out PrintStream
+        // try with resources to close stream?
+        // TODO:
     }
 
     /**
@@ -109,14 +114,31 @@ public class ChargenUdpClient extends AbstractChargenClient {
         return packet;
     }
 
-    /** TODO: */
+    /**
+     * Helper method that communicates between client and server. Sends a
+     * DatagramPacket to a server and receives one in response.
+     * @param clientSocket - The socket used for client/server communications.
+     * @param packet - The packet to be exchanged.
+     * @param buffer - The buffer to hold received data.
+     */
     private void communicate(DatagramSocket clientSocket, DatagramPacket packet,
-                             byte[] buffer)
+                             byte[] buffer) throws SocketTimeoutException,
+                             SocketException, IOException
     {
+        // send a DatagramPacket to server
+        clientSocket.send(packet);
 
+        // set timeout time
+        clientSocket.setSoTimeout(TIMEOUT);
+
+        // receive a DatagramPacket from the server
+        clientSocket.receive(packet);
     }
 
-    /** TODO: */
+    /**
+     * Helper method closes a given socket.
+     * @param clientSocket - The specified DatagramSocket to close.
+     */
     private void close(DatagramSocket clientSocket)
     {
         clientSocket.close();
