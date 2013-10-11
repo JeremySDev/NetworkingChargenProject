@@ -34,7 +34,6 @@ public abstract class AbstractChargenClient implements ChargenClient {
         this(host, 19);
     }
 
-
     /**
      * Constructor for the AbstractChargenClient that takes accepts the host's
      * address.
@@ -47,7 +46,6 @@ public abstract class AbstractChargenClient implements ChargenClient {
         this.port = port;
         this.host = host;
     }
-
 
     /**
      * getHost - returns the host field of the AbstractChargenClient.

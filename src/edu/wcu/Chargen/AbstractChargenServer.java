@@ -30,8 +30,7 @@ public abstract class AbstractChargenServer implements ChargenServer {
      */
     public AbstractChargenServer()
     {
-        this.port = 19;
-        this.source = new DefactoChargenCharacterSource();
+        this(19, new DefactoChargenCharacterSource());
     }
 
     /**
@@ -42,8 +41,7 @@ public abstract class AbstractChargenServer implements ChargenServer {
      */
     public AbstractChargenServer(int port)
     {
-        this.port = port;
-        this.source = new DefactoChargenCharacterSource();
+        this(port, new DefactoChargenCharacterSource());
     }
 
     /**
@@ -54,8 +52,7 @@ public abstract class AbstractChargenServer implements ChargenServer {
      */
     public AbstractChargenServer(ChargenCharacterSource source)
     {
-        this.port = 19;
-        this.source = source;
+        this(19, source);
     }
 
     /**
