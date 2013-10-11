@@ -2,14 +2,9 @@ package edu.wcu.Chargen;
 import edu.wcu.Chargen.ChargenCharacterSource;
 import edu.wcu.Chargen.AbstractChargenServer;
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ServerSocket;
-import java.net.InetAddress;
 import java.net.Socket;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 
 /**
  * ChargenTcpServer is a class that extends AbstractChargenServer and provides
@@ -21,13 +16,13 @@ import java.net.DatagramSocket;
  * @author Alisha Hayman
  * @version 10/8/13.
  */
-public class ChargenTcpServer extends AbstractChargenServer {
+@SuppressWarnings("FieldCanBeLocal") public class ChargenTcpServer extends AbstractChargenServer {
 
     private static final int DEFAULT_PORT = 19;
 
-    private int port;
+    private final int port;
 
-    private ChargenCharacterSource source;
+    @SuppressWarnings("FieldCanBeLocal") private final ChargenCharacterSource source;
 
     public ChargenTcpServer()
     {
@@ -51,16 +46,24 @@ public class ChargenTcpServer extends AbstractChargenServer {
     }
 
     @Override
-    public void listen() throws IOException {
+    public void listen() {
+        String clientSentence;
         try
         {
+            /* Make a connection to a client socket */
             ServerSocket serverSocket = new ServerSocket(this.port);
             Socket clientSocket = serverSocket.accept();
-            OutputStream outputStream = clientSocket.getOutputStream();
-            ObjectOutputStream objectOutputStream =
-                    new ObjectOutputStream(outputStream);
-            objectOutputStream.writeObject("stuff");  // send serilized payload
-            objectOutputStream.close();
+            /* get what type of Character source they want */
+
+
+
+
+            /*BufferedReader inFromClient = new BufferedReader(
+                    new InputStreamReader(clientSocket.getInputStream()));
+            DataOutputStream outToClient = new DataOutputStream(clientSocket.getOutputStream());
+            clientSentence = inFromClient.readLine();
+            System.out.println("Received: " + clientSentence);*/
+
         }
         catch (IOException ioe)
         {

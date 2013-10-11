@@ -1,10 +1,6 @@
 package edu.wcu.Chargen;
 import java.io.PrintStream;
-import java.net.ServerSocket;
 import java.net.InetAddress;
-import java.net.Socket;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 
 /**
  * ChargenTcpClient is a class that extends AbstractChargenClient and provides

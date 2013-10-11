@@ -1,9 +1,4 @@
 package edu.wcu.Chargen;
-import java.net.ServerSocket;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 
 /**
  * The DefactoChargenCharacterSource class implements the ChargenCharacterSource
@@ -16,11 +11,12 @@ import java.net.DatagramSocket;
  */
 public class DefactoChargenCharacterSource implements ChargenCharacterSource {
 
-    String data = "!#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+    private int placeInArray = 0;
+
+    final String data = "!#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 
     public char getNextChar()
     {
-        char next = 'f';
-        return next;
+        return data.charAt(placeInArray++);
     }
 }

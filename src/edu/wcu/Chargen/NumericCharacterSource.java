@@ -1,9 +1,4 @@
 package edu.wcu.Chargen;
-import java.net.ServerSocket;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 
 /**
  * @author Jeremy Stilwell
@@ -13,10 +8,21 @@ import java.net.DatagramSocket;
 public class NumericCharacterSource implements ChargenCharacterSource {
     private int placeInArray = 0;
 
-    private char[] data = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-
     public char getNextChar()
     {
-        return data[placeInArray++];
+        char returnMe = 'f';
+
+        if (placeInArray == 10)
+        {
+            placeInArray = 0;
+        }
+
+        if (!(placeInArray > 9) && !(placeInArray < 0))
+        {
+            String data = "0123456789";
+            returnMe = data.charAt(placeInArray++);
+        }
+
+        return returnMe;
     }
 }
