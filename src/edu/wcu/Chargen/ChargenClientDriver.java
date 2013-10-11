@@ -49,11 +49,6 @@ public class ChargenClientDriver {
         if (args.length >= 2)
         {
             clientType = args[0];
-            if (!(clientType.equalsIgnoreCase("TCP")) ||
-                    !(clientType.equalsIgnoreCase("UDP")))
-            {
-                usage();
-            }
             hostName = args[1];
         }
 
@@ -82,6 +77,10 @@ public class ChargenClientDriver {
         {
             chargenClient = new ChargenUdpClient(
                     InetAddress.getByName(hostName), portNum);
+        }
+        else
+        {
+            usage();
         }
 
         if (chargenClient != null)
