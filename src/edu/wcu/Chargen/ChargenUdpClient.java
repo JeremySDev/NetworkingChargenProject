@@ -59,7 +59,7 @@ public class ChargenUdpClient extends AbstractChargenClient {
         communicate(clientSocket, packet, buffer);
 
         // print the data from the server using the out PrintStream
-        // TODO: cocaine
+        // TODO:
 
         // call helper method to close the socket and stream
 
