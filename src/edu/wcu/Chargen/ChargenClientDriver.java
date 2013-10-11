@@ -37,6 +37,7 @@ public class ChargenClientDriver {
         /* Declaration of a ChargenClient */
         ChargenClient chargenClient = null;
 
+
         /* Not enough or too many cmd line args call usage */
         if (args.length == 0 || args.length >= 4)
         {
@@ -68,6 +69,7 @@ public class ChargenClientDriver {
             chargenFlag = args[3];
         }
 
+
         /* Check what the client type needs to be */
         if (clientType.equalsIgnoreCase("TCP"))
         {
@@ -88,6 +90,7 @@ public class ChargenClientDriver {
             //chargenClient.printToStream();
         }
     }
+
 
     private static void usage() {
         System.err.println(
