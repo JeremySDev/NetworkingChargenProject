@@ -56,6 +56,7 @@ public class ChargenUdpClient extends AbstractChargenClient {
         packet = makePacket(buffer, buffer.length, getHost(), getPort());
 
         // call helper to send and receive data from server (communicate)
+        // received data is stored in buffer
         communicate(clientSocket, packet, buffer);
 
         // print the data from the server using the out PrintStream
@@ -65,5 +66,14 @@ public class ChargenUdpClient extends AbstractChargenClient {
         close(clientSocket);
     }
 
-    private
+    /**
+     * Helper method that creates and returns a new DatagramSocket using a given
+     * port number and using the local host address.
+     * @param port - The given destination port number.
+     * @return - A new DatagramSocket to be used to talk to the server.
+     */
+    private DatagramSocket makeSocket(int port)
+    {
+        //
+    }
 }
