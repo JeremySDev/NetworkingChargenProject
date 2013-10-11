@@ -1,8 +1,6 @@
 package edu.wcu.Chargen;
 import java.io.PrintStream;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
+import java.net.*;
 
 /**
  * ChargenUDPClient is a class that extends AbstractChargenClient and provides
@@ -71,9 +69,15 @@ public class ChargenUdpClient extends AbstractChargenClient {
      * port number and using the local host address.
      * @param port - The given destination port number.
      * @return - A new DatagramSocket to be used to talk to the server.
+     * @throws - SocketException when creating a new DatagramSocket.
+     * @throws - UnknownHostException if local host can't be resolved into an
+     * address.
      */
-    private DatagramSocket makeSocket(int port)
+    private DatagramSocket makeSocket(int port) throws SocketException, UnknownHostException
     {
-        //
+        DatagramSocket newSocket = null;
+
+        // create new socket
+        newSocket = new DatagramSocket(port, InetAddress.getLocalHost());
     }
 }
