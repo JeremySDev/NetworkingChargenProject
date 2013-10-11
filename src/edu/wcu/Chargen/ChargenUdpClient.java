@@ -82,4 +82,22 @@ public class ChargenUdpClient extends AbstractChargenClient {
 
         return newSocket;
     }
+
+    /**
+     * Helper method creates a new DatagramPacket to send between the client
+     * and server during communication.
+     * @param buffer - An array of bytes to hold sent and received data.
+     * @param length - The length of the buffer.
+     * @param host - The IP address of the remote host.
+     * @param port - The remote host's port number.
+     * @return - A new DatagramPacket to use for communication.
+     * @throws - UnknownHostException if invalid information is given to the
+     * packet.
+     */
+    private DatagramPacket makePacket(byte[] buffer, int length,
+                                      InetAddress host, int port)
+            throws UnknownHostException
+    {
+
+    }
 }
