@@ -122,7 +122,7 @@ public class ChargenUdpClient extends AbstractChargenClient {
      * @param buffer - The buffer to hold received data.
      * @throws SocketTimeoutException - when the socket has timed out.
      * @throws java.net.SocketException - when the receiving socket has
-     * encountered problems
+     * encountered problems.
      * @throws IOException - if the client and server communicated incorrectly.
      */
     private void communicate(DatagramSocket clientSocket, DatagramPacket packet,
