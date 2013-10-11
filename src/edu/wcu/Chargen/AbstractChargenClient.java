@@ -44,15 +44,25 @@ public abstract class AbstractChargenClient implements ChargenClient {
         this.host = host;
     }
 
+
+    /**
+     * getHost - returns the host field of the AbstractChargenClient.
+     *
+     * @return host - the InetAddress of the host.
+     */
     protected InetAddress getHost()
     {
         return this.host;
     }
 
+    /**
+     * getPort - returns the port field of the AbstractChargenClient.
+     *
+     * @return port - the number of the port being
+     */
     protected int getPort()
     {
         return this.port;
-
     }
 
     @Override
