@@ -1,5 +1,7 @@
 package edu.wcu.Chargen;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintStream;
 //TODO: CHANGE THIS
 import java.net.*;
@@ -63,15 +65,16 @@ public class ChargenUdpClient extends AbstractChargenClient {
         communicate(clientSocket, packet, buffer);
 
         // place received data from buffer into the PrintStream
-        out = new PrintStream(new String(packet.getData()));
+        // TODO:
+        out = new PrintStream();
+
+        // print the data from the server using the out PrintStream
+        // TODO: print and close in main?
+        out.println(packet.getData());
 
         // TODO: correct place? Main?
         // call helper method to close the socket
         clientSocket.close();
-
-        // print the data from the server using the out PrintStream
-        // TODO: print and close in main?
-        System.out.println(out);
     }
 
     /**
