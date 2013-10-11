@@ -10,7 +10,7 @@ import java.util.Scanner;
  * Data received from the remote host is printed to the specified PrintStream.
  *
  * @author Jeremy Stilwell
- * @author Alisha Hayman
+ * @author Alisha Haymans
  * @version 10/8/13.
  */
 public class ChargenTcpClient extends AbstractChargenClient {
@@ -44,9 +44,6 @@ public class ChargenTcpClient extends AbstractChargenClient {
             /* connect the two sockets */
             clientSocket.connect(serverSocket.getRemoteSocketAddress());
 
-            Scanner outputFromServer = new Scanner(new InputStreamReader
-                        (clientSocket.getInputStream()));
-            System.out.println(outputFromServer.next());
         }
         catch(IOException e)
         {
@@ -62,6 +59,7 @@ public class ChargenTcpClient extends AbstractChargenClient {
     public void printToStream(PrintStream out)
     {
         Scanner outputFromServer = null;
+
         try {
             outputFromServer = new Scanner(new InputStreamReader
                     (clientSocket.getInputStream()));
@@ -75,7 +73,6 @@ public class ChargenTcpClient extends AbstractChargenClient {
         } catch (FileNotFoundException e) {
             System.err.println("Problem connecting client and server: " + e);
             System.exit(1);
-        }
         }
 
         System.out.println(out);
