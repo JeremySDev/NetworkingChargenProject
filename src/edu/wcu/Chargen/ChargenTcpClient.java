@@ -39,8 +39,8 @@ public class ChargenTcpClient extends AbstractChargenClient {
         socketHelper();
         Scanner outputFromServer = new Scanner(new InputStreamReader(
                 clientSocket.getInputStream()));
-        out = new PrintStream(outputFromServer.next());
-        System.out.println(out);
+        out = new PrintStream(System.out);
+        out.print(outputFromServer.next());
     }
 
     private void socketHelper() throws IOException {
