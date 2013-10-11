@@ -67,6 +67,7 @@ public class ChargenUdpClient extends AbstractChargenClient {
     /**
      * Helper method that creates and returns a new DatagramSocket using a given
      * port number and using the local host address.
+     *
      * @param port - The given destination port number.
      * @return - A new DatagramSocket to be used to talk to the server.
      * @throws - SocketException when creating a new DatagramSocket.
@@ -86,6 +87,7 @@ public class ChargenUdpClient extends AbstractChargenClient {
     /**
      * Helper method creates a new DatagramPacket to send between the client
      * and server during communication.
+     *
      * @param buffer - An array of bytes to hold sent and received data.
      * @param length - The length of the buffer.
      * @param host - The IP address of the remote host.

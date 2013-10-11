@@ -15,16 +15,27 @@ import java.net.Socket;
  */
 public class ChargenTcpClient extends AbstractChargenClient {
 
+    /**
+     * The constructor for ChargenTcpClient sets the host and port using
+     * AbstractChargenClient's constructor
+     *
+     * @param host - the host's InetAddress.
+     * @param port - the port number to use.
+     */
     public ChargenTcpClient(InetAddress host, int port) {
         super(host, port);
     }
 
+    /**
+     *
+     * @param out
+     */
     public void printToStream(PrintStream out)
     {
         try
         {
-        Socket clientSocket = new Socket();
-        Socket serverSocket = new Socket(this.host, this.port);
+            Socket clientSocket = new Socket();
+            Socket serverSocket = new Socket(this.getHost(), this.getPort());
         }
         catch(IOException e)
         {

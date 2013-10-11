@@ -1,5 +1,7 @@
 package edu.wcu.Chargen;
-import java.net.*;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  * ChargenClientDriver is the entry point of the application. It includes one
@@ -18,7 +20,7 @@ import java.net.*;
  * @author Alisha Hayman
  * @version 10/8/13.
  */
-@SuppressWarnings("ConstantConditions") public class ChargenClientDriver {
+public class ChargenClientDriver {
     public static void main(String[] args) throws UnknownHostException {
         /* default "well-known" chargen port number */
         int portNum = 19;
