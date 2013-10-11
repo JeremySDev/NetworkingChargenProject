@@ -45,13 +45,13 @@ public class ChargenTcpClient extends AbstractChargenClient {
 
             DataOutputStream outputToServer = new DataOutputStream
                     (clientSocket.getOutputStream());
+
         }
         catch(IOException e)
         {
             System.err.println("Problem connecting client and server: " + e);
             System.exit(1);
         }
-
     }
 
     /**
