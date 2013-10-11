@@ -1,8 +1,5 @@
 package edu.wcu.Chargen;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.io.*;
 //TODO: CHANGE THIS
 import java.net.*;
 
@@ -54,6 +51,8 @@ public class ChargenUdpClient extends AbstractChargenClient {
     public void printToStream(PrintStream out) throws SocketTimeoutException,
             SocketException, UnknownHostException, IOException
     {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
         // call helper method to create the clientSocket
         clientSocket = makeSocket(getPort());
 
@@ -65,10 +64,10 @@ public class ChargenUdpClient extends AbstractChargenClient {
         communicate(clientSocket, packet, buffer);
 
         // print the data from the server using the out PrintStream
-        // TODO: print and close in main?
-        out.println(packet.getData().toString());
+        // TODO: What is this even doing? Is it printing? Where?
+        out = new PrintStream(baos);
+        baos.write(buffer); // move above "out = " line?
 
-        // TODO: correct place? Main?
         // close the socket and stream
         out.close();
         clientSocket.close();

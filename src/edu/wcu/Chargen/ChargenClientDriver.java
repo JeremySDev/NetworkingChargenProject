@@ -2,6 +2,7 @@ package edu.wcu.Chargen;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.io.PrintStream;
 
 /**
  * ChargenClientDriver is the entry point of the application. It includes one
@@ -64,7 +65,6 @@ public class ChargenClientDriver {
             chargenFlag = args[3];
         }
 
-
         /* Check what the client type needs to be */
         if (clientType.equalsIgnoreCase("TCP"))
         {
@@ -85,8 +85,8 @@ public class ChargenClientDriver {
 
         if (chargenClient != null)
         {
-            System.out.println("stuff");
-            //chargenClient.printToStream();
+            //System.out.println("stuff");
+            chargenClient.printToStream();
         }
     }
 
