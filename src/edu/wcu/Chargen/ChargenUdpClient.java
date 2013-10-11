@@ -79,5 +79,7 @@ public class ChargenUdpClient extends AbstractChargenClient {
 
         // create new socket
         newSocket = new DatagramSocket(port, InetAddress.getLocalHost());
+
+        return newSocket;
     }
 }
