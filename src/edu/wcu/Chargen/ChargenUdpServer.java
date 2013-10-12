@@ -1,8 +1,9 @@
 package edu.wcu.Chargen;
 
 import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.util.Random;
 
 /**
  * ChargenUdpServer is a class that extends AbstractChargenServer and provides a
@@ -23,7 +24,13 @@ public class ChargenUdpServer extends AbstractChargenServer {
     private int serverPort;
 
     /** The socket for this server to use. */
-    private ServerSocket serverSocket;
+    private DatagramSocket serverSocket;
+
+    /** Array of bytes to hold data to receive from client. */
+    byte[] receiveData;
+
+    /** Array of bytes to hold data to send to client. */
+    byte[] sendData;
 
     /**
      * Determines whether to generate AlphaNumeric, NonAlphaNumeric, Numeric, or
@@ -77,7 +84,9 @@ public class ChargenUdpServer extends AbstractChargenServer {
     {
         serverPort = port;
         typeChars = source;
-        serverSocket = new ServerSocket(serverPort);
+        sendData = new byte[256];
+        receiveData = new byte[256];
+        serverSocket = new DatagramSocket(serverPort);
     }
 
     /**
@@ -95,24 +104,50 @@ public class ChargenUdpServer extends AbstractChargenServer {
      */
     public void listen() throws IOException
     {
-        // TODO:
+        // TODO: Probably should use a helper! Too long!
+
+        // Packet to receive client's data
+        DatagramPacket receievePacket = new DatagramPacket(receiveData,
+                                                           receiveData.length);
+
+        // Packet to hold server's data
+        DatagramPacket sendPacket = null;
+
+        // Generated sequence of chars
+        String charSequence = "";
+
+        // random number generated
+        int randomNum = 0;
+
+        // Random number generator
+        Random random = new Random();
 
         // TODO: Needs to stop at some time
         // wait to receive a datagram
         while (true)
         {
-            Socket clientSocket = serverSocket.accept();
+            // receive a packet from the client
+            serverSocket.receive(receievePacket);
 
-            // if the received socket is not empty,
-            if (clientSocket != null)
+            // TODO: works?
+            if (receievePacket.getData() != null)
             {
-                // get the local port from the received socket
-
                 // generate a random number from 0 to 512
+                randomNum = random.nextInt(513);
 
                 // generate an appropriate char sequence (for loop) use getNext
+                for (int i = 0; i < randomNum; i++)
+                {
+                    charSequence = charSequence +
+                                   String.valueOf(typeChars.getNextChar());
+                }
 
-                // send this sequence to the received socket
+                // put the char sequence into the sending byte array
+                sendData = charSequence.getBytes();
+
+                // send this sequence to the client
+                sendPacket = new DatagramPacket()
+
 
             }
 
