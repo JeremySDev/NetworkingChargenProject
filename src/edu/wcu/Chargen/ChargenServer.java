@@ -1,5 +1,7 @@
 package edu.wcu.Chargen;
 
+import java.io.IOException;
+
 /**
  * ChargenServer is the interface to a chargen server implementation. The
  * interface includes a method: listen(). Classes implementing this interface
@@ -11,5 +13,5 @@ package edu.wcu.Chargen;
  */
 public interface ChargenServer {
     /* listen will listen for requests from clients. */
-    public void listen();
+    public void listen() throws IOException;
 }

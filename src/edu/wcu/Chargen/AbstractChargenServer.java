@@ -1,5 +1,7 @@
 package edu.wcu.Chargen;
 
+import java.io.IOException;
+
 /**
  * AbstractChargenServer is an abstract class that implements the ChargenServer
  * interface. This class includes attributes that are common to all Chargen
@@ -102,7 +104,8 @@ public abstract class AbstractChargenServer implements ChargenServer {
     /**
      * listen
      */
-    public void listen() {
+    public void listen() throws IOException
+    {
 
     }
 }

@@ -2,6 +2,7 @@ package edu.wcu.Chargen;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.Socket;
 
 /**
  * ChargenUdpServer is a class that extends AbstractChargenServer and provides a
@@ -79,9 +80,47 @@ public class ChargenUdpServer extends AbstractChargenServer {
         serverSocket = new ServerSocket(serverPort);
     }
 
-    /** TODO: */
-    public void listen()
+    /**
+     * This method listens for UDP datagrams on UDP port 19.  When a datagram is
+     * received, an answering datagram is sent containing a random number
+     * (between 0 and 512) of characters (the data in the received datagram is
+     * ignored). There is no history or state information associated with the
+     * UDP version of this service, so there is no continuity of data from one
+     * answering datagram to another.
+     *
+     * The service only send one datagram in response to each received
+     * datagram, so there is no concern about the service sending data faster
+     * than the user can process it.
+     * @throws IOException - if there are problems closing a socket.
+     */
+    public void listen() throws IOException
     {
+        // TODO:
 
+        // TODO: Needs to stop at some time
+        // wait to receive a datagram
+        while (true)
+        {
+            Socket clientSocket = serverSocket.accept();
+
+            // if the received socket is not empty,
+            if (clientSocket != null)
+            {
+                // get the local port from the received socket
+
+                // generate a random number from 0 to 512
+
+                // generate an appropriate char sequence (for loop) use getNext
+
+                // send this sequence to the received socket
+
+            }
+
+            // close newly made socket
+            clientSocket.close();
+        }
+
+        // close the socket after done listening... here?
+        // TODO: serverSocket.close();
     }
 }
