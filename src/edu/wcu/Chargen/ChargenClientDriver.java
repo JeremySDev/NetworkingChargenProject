@@ -89,7 +89,7 @@ public class ChargenClientDriver {
 
         if (chargenClient != null)
         {
-            PrintStream out = new PrintStream("null");
+            PrintStream out = new PrintStream(System.out);
             chargenClient.printToStream(out);
         }
     }

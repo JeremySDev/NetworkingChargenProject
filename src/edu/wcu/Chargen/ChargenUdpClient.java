@@ -65,8 +65,9 @@ public class ChargenUdpClient extends AbstractChargenClient {
 
         // print the data from the server using the out PrintStream
         // TODO: What is this even doing? Is it printing? Where?
-        out = new PrintStream(baos);
-        baos.write(buffer); // move above "out = " line?
+        /*out = new PrintStream(baos);
+        baos.write(buffer); // move above "out = " line?*/
+        out.print(packet.getData().toString());
 
         // close the socket and stream
         out.close();

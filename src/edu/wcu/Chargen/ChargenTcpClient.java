@@ -1,4 +1,5 @@
 package edu.wcu.Chargen;
+//TODO: Change this
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -39,7 +40,7 @@ public class ChargenTcpClient extends AbstractChargenClient {
         socketHelper();
         Scanner outputFromServer = new Scanner(new InputStreamReader(
                 clientSocket.getInputStream()));
-        out = new PrintStream(System.out);
+        //out = new PrintStream(System.out);
         out.print(outputFromServer.next());
     }
 
