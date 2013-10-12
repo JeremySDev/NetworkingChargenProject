@@ -3,7 +3,7 @@ package edu.wcu.Chargen;
 /**
  * The DefactoChargenCharacterSource class implements the ChargenCharacterSource
  * interface and produces the defacto standard character sequence produced by
- * chargen servers. Used when the
+ * chargen servers.
  *
  * @author Jeremy Stilwell
  * @author Alisha Hayman
