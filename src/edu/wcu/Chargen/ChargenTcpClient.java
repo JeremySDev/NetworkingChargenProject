@@ -44,6 +44,9 @@ public class ChargenTcpClient extends AbstractChargenClient {
                 clientSocket.getInputStream()));
         //out = new PrintStream(System.out);
         out.print(outputFromServer.next());
+        out.close();
+        clientSocket.close();
+        serverSocket.close();
     }
 
     private void socketHelper() throws IOException {
