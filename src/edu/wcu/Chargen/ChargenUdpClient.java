@@ -1,7 +1,13 @@
 package edu.wcu.Chargen;
-import java.io.*;
-//TODO: CHANGE THIS
-import java.net.*;
+
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
 
 /**
  * ChargenUDPClient is a class that extends AbstractChargenClient and provides
@@ -51,7 +57,7 @@ public class ChargenUdpClient extends AbstractChargenClient {
     public void printToStream(PrintStream out) throws SocketTimeoutException,
             SocketException, UnknownHostException, IOException
     {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        //ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
         // call helper method to create the clientSocket
         clientSocket = makeSocket(getPort());

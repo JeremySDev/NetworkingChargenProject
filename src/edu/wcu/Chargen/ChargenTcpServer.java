@@ -1,6 +1,6 @@
 package edu.wcu.Chargen;
 
-import java.io.*;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
