@@ -146,13 +146,10 @@ public class ChargenUdpServer extends AbstractChargenServer {
                 sendData = charSequence.getBytes();
 
                 // send this sequence to the client
-                sendPacket = new DatagramPacket()
-
-
+                sendPacket = new DatagramPacket(sendData, sendData.length,
+                        receievePacket.getAddress(), receievePacket.getPort());
+                serverSocket.send(sendPacket);
             }
-
-            // close newly made socket
-            clientSocket.close();
         }
 
         // close the socket after done listening... here?
