@@ -45,23 +45,34 @@ public class ChargenTcpServer extends AbstractChargenServer {
 
     @Override
     public void listen() {
-
+        String flag = "cats";
         try
         {
             /* Make a connection to a client socket */
             ServerSocket serverSocket = new ServerSocket(this.port);
             Socket clientSocket = serverSocket.accept();
             /* get what type of Character source they want */
+            if (flag.equals("NAN"))
+            {
+                this.changeSource();
+            }
+            else if (flag.equals("AN"))
+            {
+
+            }
+            else if (flag.equals("N"))
+            {
+
+            }
+            else
+            {
+
+            }
 
 
 
 
 
-            /*BufferedReader inFromClient = new BufferedReader(
-                    new InputStreamReader(clientSocket.getInputStream()));
-            DataOutputStream outToClient = new DataOutputStream(clientSocket.getOutputStream());
-            clientSentence = inFromClient.readLine();
-            System.out.println("Received: " + clientSentence);*/
 
         }
         catch (IOException ioe)

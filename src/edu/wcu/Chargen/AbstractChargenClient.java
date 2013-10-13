@@ -23,6 +23,8 @@ public abstract class AbstractChargenClient implements ChargenClient {
     /* The default port number of the Chargen Server */
     private int port = 19;
 
+    /* flag for the type of character source */
+    private String flag = "<CR><LF>";
     /**
      * Constructor for the AbstractChargenClient that takes accepts the host's
      * address.
@@ -67,6 +69,15 @@ public abstract class AbstractChargenClient implements ChargenClient {
         return this.port;
     }
 
+    protected void setFlag(String flag)
+    {
+        this.flag = flag;
+    }
+
+    protected String getFlag()
+    {
+        return this.flag;
+    }
     /**
      * Abstract method used to print data received from the server into a given
      * output stream.
