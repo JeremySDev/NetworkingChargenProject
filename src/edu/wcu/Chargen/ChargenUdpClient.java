@@ -65,7 +65,7 @@ public class ChargenUdpClient extends AbstractChargenClient {
         /* call helper method to create the clientSocket */
         clientSocket = makeSocket(LOCAL_PORT);
 
-        // call helper method to create the packet */
+        /* call helper method to create the packet */
         packet = makePacket(buffer, buffer.length, getHost(), getPort());
 
         /* call helper to send and receive data from server (communicate)*/
