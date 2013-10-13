@@ -62,23 +62,23 @@ public class ChargenUdpClient extends AbstractChargenClient {
     {
         //ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-        // call helper method to create the clientSocket
+        /* call helper method to create the clientSocket */
         clientSocket = makeSocket(LOCAL_PORT);
 
-        // call helper method to create the packet
+        // call helper method to create the packet */
         packet = makePacket(buffer, buffer.length, getHost(), getPort());
 
-        // call helper to send and receive data from server (communicate)
-        // received data is stored in buffer
+        /* call helper to send and receive data from server (communicate)*/
+        /* received data is stored in buffer*/
         communicate(clientSocket, packet, buffer);
 
-        // print the data from the server using the out PrintStream
-        // TODO: What is this even doing? Is it printing? Where?
+        /* print the data from the server using the out PrintStream */
+        /* TODO: What is this even doing? Is it printing? Where? */
         /*out = new PrintStream(baos);
         baos.write(buffer); // move above "out = " line?*/
-        out.println(new String(packet.getData()));
+        out.print(new String(packet.getData()));
 
-        // close the socket and stream
+        /* close the socket and stream */
         out.close();
         clientSocket.close();
     }
