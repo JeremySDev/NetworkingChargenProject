@@ -45,13 +45,14 @@ public class ChargenTcpServer extends AbstractChargenServer {
 
     @Override
     public void listen() {
-        String clientSentence;
+
         try
         {
             /* Make a connection to a client socket */
             ServerSocket serverSocket = new ServerSocket(this.port);
             Socket clientSocket = serverSocket.accept();
             /* get what type of Character source they want */
+
 
 
 
