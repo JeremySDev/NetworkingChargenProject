@@ -23,6 +23,9 @@ public class ChargenUdpClient extends AbstractChargenClient {
     /** Time in milliseconds until timeout. */
     private static final int TIMEOUT = 5000;
 
+    /** The port number for the clientSocket. */
+    private static final int LOCAL_PORT = 12345;
+
     /** Client UDP socket. */
     private DatagramSocket clientSocket;
 
@@ -60,7 +63,7 @@ public class ChargenUdpClient extends AbstractChargenClient {
         //ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
         // call helper method to create the clientSocket
-        clientSocket = makeSocket(getPort());
+        clientSocket = makeSocket(LOCAL_PORT);
 
         // call helper method to create the packet
         packet = makePacket(buffer, buffer.length, getHost(), getPort());
@@ -73,7 +76,7 @@ public class ChargenUdpClient extends AbstractChargenClient {
         // TODO: What is this even doing? Is it printing? Where?
         /*out = new PrintStream(baos);
         baos.write(buffer); // move above "out = " line?*/
-        out.print(packet.getData().toString());
+        out.print(new String(packet.getData()));
 
         // close the socket and stream
         out.close();
