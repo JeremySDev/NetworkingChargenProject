@@ -42,7 +42,7 @@ public class ChargenTcpClient extends AbstractChargenClient {
         socketHelper();
         Scanner outputFromServer = new Scanner(new InputStreamReader(
                 clientSocket.getInputStream()));
-        //out = new PrintStream(System.out);
+        out = new PrintStream(System.out);
         out.print(outputFromServer.next());
         out.close();
         clientSocket.close();
