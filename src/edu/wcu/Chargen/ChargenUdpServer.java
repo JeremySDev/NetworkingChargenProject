@@ -152,7 +152,7 @@ public class ChargenUdpServer extends AbstractChargenServer {
             }
         }
 
-        // close the socket after done listening... here?
-        // TODO: serverSocket.close();
+        // TODO: close the socket after done listening... here?
+        //serverSocket.close();
     }
 }
