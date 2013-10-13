@@ -1,5 +1,8 @@
 package edu.wcu.Chargen;
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
@@ -35,14 +38,12 @@ public class ChargenTcpClient extends AbstractChargenClient {
     }
 
     /**
-     *
      * @param out - a PrintStream object
      */
     public void printToStream(PrintStream out) throws IOException {
         socketHelper();
         Scanner outputFromServer = new Scanner(new InputStreamReader(
                 clientSocket.getInputStream()));
-        //out = new PrintStream(System.out);
         out.print(outputFromServer.next());
         out.close();
         clientSocket.close();
@@ -50,13 +51,35 @@ public class ChargenTcpClient extends AbstractChargenClient {
     }
 
     private void socketHelper() throws IOException {
-            /* make a socket on the client side */
-            clientSocket = new Socket();
+        /* make a socket on the client side */
+        clientSocket = new Socket();
 
-            /* make a socket on the server side based on the host and port */
-            serverSocket = new Socket(this.getHost(), this.getPort());
+        /* make a socket on the server side based on the host and port */
+        serverSocket = new Socket(this.getHost(), this.getPort());
 
-            /* connect the two sockets */
-            clientSocket.connect(serverSocket.getRemoteSocketAddress());
+        /* connect the two sockets */
+        clientSocket.connect(serverSocket.getRemoteSocketAddress());
+
+        String sentence = this.getFlag();
+        DataOutputStream os = new DataOutputStream(clientSocket.getOutputStream());
+        DataInputStream is = new DataInputStream(clientSocket.getInputStream());
+        os.writeBytes(sentence + '\n');
+
+        if ((this.getFlag()).equals("NAN"))
+        {
+
+        }
+        else if ((this.getFlag()).equals("AN"))
+        {
+
+        }
+        else if ((this.getFlag()).equals("N"))
+        {
+
+        }
+        else
+        {
+
+        }
     }
 }
