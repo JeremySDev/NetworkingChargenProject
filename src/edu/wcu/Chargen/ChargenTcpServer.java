@@ -1,6 +1,9 @@
 package edu.wcu.Chargen;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -52,7 +55,10 @@ public class ChargenTcpServer extends AbstractChargenServer {
             ServerSocket serverSocket = new ServerSocket(this.port);
             Socket clientSocket = serverSocket.accept();
             /* get what type of Character source they want */
-            if (flag.equals("NAN"))
+            DataInputStream is = new DataInputStream(clientSocket.getInputStream());
+            DataOutputStream outputStream = new DataOutputStream(clientSocket.getOutputStream());
+
+            /*if (flag.equals("NAN"))
             {
                 this.changeSource();
             }
@@ -67,7 +73,7 @@ public class ChargenTcpServer extends AbstractChargenServer {
             else
             {
 
-            }
+            }*/
 
 
 

@@ -59,8 +59,7 @@ public class ChargenTcpClient extends AbstractChargenClient {
 
         /* connect the two sockets */
         clientSocket.connect(serverSocket.getRemoteSocketAddress());
-
-
+        System.out.println("Flag: " + this.getFlag());
         if (!((this.getFlag()).equals(null)))
         {
             String sentence = this.getFlag();
