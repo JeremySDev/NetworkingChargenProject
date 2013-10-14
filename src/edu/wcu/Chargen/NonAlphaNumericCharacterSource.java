@@ -17,7 +17,7 @@ public class NonAlphaNumericCharacterSource implements ChargenCharacterSource {
         {
             placeInArray = 0;
         }
-
+        //for loop dummy
         if (!(placeInArray > 29) && !(placeInArray < 0))
         {
             String data = "!#$%&'()*+,-./:;<=>?@[]^_^`{|}~";
