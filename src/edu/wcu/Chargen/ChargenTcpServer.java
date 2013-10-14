@@ -59,7 +59,7 @@ public class ChargenTcpServer extends AbstractChargenServer {
 
             /* get what type of Character source they want */
             DataInputStream inputStream = new DataInputStream(clientSocket.getInputStream());
-            DataOutputStream outputStream = new DataOutputStream(clientSocket.getOutputStream());
+            PrintStream outputStream = new PrintStream(clientSocket.getOutputStream());
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
             System.out.println("Flag: " + flag);
@@ -79,6 +79,7 @@ public class ChargenTcpServer extends AbstractChargenServer {
                     this.changeSource(new DefactoChargenCharacterSource());
                     break;
             }
+            outputStream.println((this.getCharacterSource()).getNextChar());
 
         }
         catch (IOException ioe)
