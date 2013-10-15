@@ -25,7 +25,7 @@ public class ChargenTcpClient extends AbstractChargenClient {
     Socket clientSocket = null;
     /* make a socket on the server side based on the host and port */
     Socket serverSocket = null;
-
+    int num = 1;
     /**
      * The constructor for ChargenTcpClient sets the host and port using
      * AbstractChargenClient's constructor
@@ -53,19 +53,34 @@ public class ChargenTcpClient extends AbstractChargenClient {
     private void socketHelper() throws IOException {
         /* make a socket on the client side */
         clientSocket = new Socket();
+        printer();
 
         /* make a socket on the server side based on the host and port */
         serverSocket = new Socket(this.getHost(), this.getPort());
+        printer();
 
         /* connect the two sockets */
         clientSocket.connect(serverSocket.getRemoteSocketAddress());
-        System.out.println("Flag: " + this.getFlag());
-        if (!((this.getFlag()).equals(null))) {
-            String sentence = this.getFlag();
-            DataOutputStream os = new DataOutputStream(clientSocket.getOutputStream());
-            DataInputStream is = new DataInputStream(clientSocket.getInputStream());
-            os.writeBytes(sentence + '\n');
-        }
+        printer();
 
+        System.out.println("Flag: " + this.getFlag());
+        /*if (!((this.getFlag()).equals(null))) {*/
+        String flag = this.getFlag();
+        printer();
+
+        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(clientSocket.getInputStream()));
+        printer();
+
+        DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
+        printer();
+
+        outToServer.writeBytes(flag + '\n');
+        printer();
+        /*}*/
+    }
+
+    private void printer()
+    {
+        System.out.println("Stage " + num++);
     }
 }

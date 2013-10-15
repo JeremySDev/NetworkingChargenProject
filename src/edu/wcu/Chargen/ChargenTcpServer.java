@@ -55,15 +55,24 @@ public class ChargenTcpServer extends AbstractChargenServer {
         {
             /* Make a connection to a client socket */
             ServerSocket serverSocket = new ServerSocket(this.port);
-            Socket clientSocket = serverSocket.accept();
+            System.out.println("Made Server Socket");
 
-            /* get what type of Character source they want */
-            DataInputStream inputStream = new DataInputStream(clientSocket.getInputStream());
-            PrintStream outputStream = new PrintStream(clientSocket.getOutputStream());
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            Socket clientSocket = serverSocket.accept();
+            System.out.println("Server socket accepted client");
+
+            BufferedReader inFromClient = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            System.out.println("Made Buffered Reader");
+
+            DataOutputStream outToClient = new DataOutputStream(clientSocket.getOutputStream());
+            System.out.println("Made Data output stream");
+
+            //outToClient.writeBytes("capitalizedSentence");
 
             System.out.println("Flag: " + flag);
-            flag = bufferedReader.readLine();
+
+            flag = inFromClient.readLine();
+
+            System.out.println("Flag: " + flag);
 
             switch (flag) {
                 case "NAN":
@@ -79,7 +88,7 @@ public class ChargenTcpServer extends AbstractChargenServer {
                     this.changeSource(new DefactoChargenCharacterSource());
                     break;
             }
-            outputStream.println((this.getCharacterSource()).getNextChar());
+            //outputStream.println((this.getCharacterSource()).getNextChar());
         }
         catch (IOException ioe)
         {
@@ -87,5 +96,6 @@ public class ChargenTcpServer extends AbstractChargenServer {
             System.err.println(ioe.toString());
             System.exit(1);
         }
+        System.out.println("Flag: " + flag);
     }
 }
