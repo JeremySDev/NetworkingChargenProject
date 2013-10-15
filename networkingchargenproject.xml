@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="networkingchargenproject" default="all">
+  
+  
+  <property file="networkingchargenproject.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.zip"/>
+    <include name="*.apk"/>
+    <include name="*.war"/>
+    <include name="*.egg"/>
+    <include name="*.ear"/>
+    <include name="*.ane"/>
+    <include name="*.swc"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.7" value="${jdk.home.1.7}/bin"/>
+  <path id="jdk.classpath.1.7">
+    <fileset dir="${jdk.home.1.7}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/rhino.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/pulse-java.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.7}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.7}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.7"/>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm4-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module ChargenProject -->
+  
+  <dirname property="module.chargenproject.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.chargenproject" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.chargenproject" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.chargenproject" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.chargenproject" value="${compiler.args}"/>
+  
+  <property name="chargenproject.output.dir" value="${module.chargenproject.basedir}/out/production/ChargenProject"/>
+  <property name="chargenproject.testoutput.dir" value="${module.chargenproject.basedir}/out/test/ChargenProject"/>
+  
+  <path id="chargenproject.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="chargenproject.module.production.classpath">
+    <path refid="${module.jdk.classpath.chargenproject}"/>
+  </path>
+  
+  <path id="chargenproject.runtime.production.module.classpath">
+    <pathelement location="${chargenproject.output.dir}"/>
+  </path>
+  
+  <path id="chargenproject.module.classpath">
+    <path refid="${module.jdk.classpath.chargenproject}"/>
+    <pathelement location="${chargenproject.output.dir}"/>
+  </path>
+  
+  <path id="chargenproject.runtime.module.classpath">
+    <pathelement location="${chargenproject.testoutput.dir}"/>
+    <pathelement location="${chargenproject.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.chargenproject">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.chargenproject">
+    <patternset refid="excluded.from.module.chargenproject"/>
+  </patternset>
+  
+  <path id="chargenproject.module.sourcepath">
+    <dirset dir="${module.chargenproject.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.chargenproject" depends="compile.module.chargenproject.production,compile.module.chargenproject.tests" description="Compile module ChargenProject"/>
+  
+  <target name="compile.module.chargenproject.production" depends="register.custom.compilers" description="Compile module ChargenProject; production classes">
+    <mkdir dir="${chargenproject.output.dir}"/>
+    <javac2 destdir="${chargenproject.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.chargenproject}/javac">
+      <compilerarg line="${compiler.args.chargenproject}"/>
+      <bootclasspath refid="chargenproject.module.bootclasspath"/>
+      <classpath refid="chargenproject.module.production.classpath"/>
+      <src refid="chargenproject.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.chargenproject"/>
+    </javac2>
+    
+    <copy todir="${chargenproject.output.dir}">
+      <fileset dir="${module.chargenproject.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.chargenproject.tests" depends="register.custom.compilers,compile.module.chargenproject.production" description="compile module ChargenProject; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.chargenproject" description="cleanup module">
+    <delete dir="${chargenproject.output.dir}"/>
+    <delete dir="${chargenproject.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.chargenproject" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.chargenproject" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>
