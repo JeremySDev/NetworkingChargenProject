@@ -33,14 +33,14 @@ public class ChargenServerDriver {
 
         /* TODO: ask Kreahling if we should exit or try to get the right server type */
         /* Only one arg then set the server type */
-        if (args.length == 1)
+        if (args.length >= 1)
         {
             serverType = args[0];
-            if (!serverType.equalsIgnoreCase("TCP") ||
+            /*if (!serverType.equalsIgnoreCase("TCP") ||
                     !serverType.equalsIgnoreCase("UDP"))
             {
                 usage();
-            }
+            }*/
         }
 
         /* Two arguments set the port number as well */
