@@ -60,12 +60,12 @@ public class ChargenTcpClient extends AbstractChargenClient {
         /* connect the two sockets */
         clientSocket.connect(serverSocket.getRemoteSocketAddress());
         System.out.println("Flag: " + this.getFlag());
-        if (!((this.getFlag()).equals(null)))
-        {
-            String sentence = this.getFlag();
-            DataOutputStream os = new DataOutputStream(clientSocket.getOutputStream());
-            DataInputStream is = new DataInputStream(clientSocket.getInputStream());
-            os.writeBytes(sentence + '\n');
+        if (((this.getFlag()).equals(null))) {
+            return;
         }
+        String sentence = this.getFlag();
+        DataOutputStream os = new DataOutputStream(clientSocket.getOutputStream());
+        DataInputStream is = new DataInputStream(clientSocket.getInputStream());
+        os.writeBytes(sentence + '\n');
     }
 }
