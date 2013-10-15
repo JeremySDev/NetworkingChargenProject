@@ -80,7 +80,6 @@ public class ChargenTcpServer extends AbstractChargenServer {
                     break;
             }
             outputStream.println((this.getCharacterSource()).getNextChar());
-
         }
         catch (IOException ioe)
         {
