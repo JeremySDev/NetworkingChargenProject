@@ -44,7 +44,7 @@ public class ChargenClientDriver {
 
 
         /* Not enough or too many cmd line args call usage */
-        if (args.length == 0 || args.length >= 4)
+        if (args.length == 0 || args.length >= 5)
         {
             usage();
         }

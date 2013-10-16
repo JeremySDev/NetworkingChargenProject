@@ -66,7 +66,6 @@ public class ChargenTcpServer extends AbstractChargenServer {
             DataOutputStream outToClient = new DataOutputStream(clientSocket.getOutputStream());
             System.out.println("Made Data output stream");
 
-            //outToClient.writeBytes("capitalizedSentence");
 
             System.out.println("Flag: " + flag);
 
@@ -74,7 +73,8 @@ public class ChargenTcpServer extends AbstractChargenServer {
 
             System.out.println("Flag: " + flag);
 
-            switch (flag) {
+
+            /*switch (flag) {
                 case "NAN":
                     this.changeSource(new NonAlphaNumericCharacterSource());
                     break;
@@ -87,7 +87,7 @@ public class ChargenTcpServer extends AbstractChargenServer {
                 default:
                     this.changeSource(new DefactoChargenCharacterSource());
                     break;
-            }
+            }*/
             //outputStream.println((this.getCharacterSource()).getNextChar());
         }
         catch (IOException ioe)

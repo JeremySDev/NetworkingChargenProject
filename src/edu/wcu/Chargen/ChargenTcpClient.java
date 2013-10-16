@@ -53,34 +53,30 @@ public class ChargenTcpClient extends AbstractChargenClient {
     private void socketHelper() throws IOException {
         /* make a socket on the client side */
         clientSocket = new Socket();
-        printer();
+        System.out.println("Made Client Socket");
 
         /* make a socket on the server side based on the host and port */
         serverSocket = new Socket(this.getHost(), this.getPort());
-        printer();
+        System.out.println("Made Server Socket");
+        System.out.println("Host: " + this.getHost());
 
         /* connect the two sockets */
         clientSocket.connect(serverSocket.getRemoteSocketAddress());
-        printer();
+        System.out.println("Connected Client and Server");
 
         System.out.println("Flag: " + this.getFlag());
         /*if (!((this.getFlag()).equals(null))) {*/
         String flag = this.getFlag();
-        printer();
+        System.out.println("Set Flag");
 
         BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(clientSocket.getInputStream()));
-        printer();
+        System.out.println("Made buffered reader");
 
         DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
-        printer();
+        System.out.println("Made Data Output Stream");
 
         outToServer.writeBytes(flag + '\n');
-        printer();
+        System.out.println("Wrote Bytes");
         /*}*/
-    }
-
-    private void printer()
-    {
-        System.out.println("Stage " + num++);
     }
 }
