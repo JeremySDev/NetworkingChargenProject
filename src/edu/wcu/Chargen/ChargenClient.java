@@ -30,4 +30,6 @@ public interface ChargenClient {
      */
     public void printToStream(PrintStream out) throws SocketTimeoutException,
             SocketException, UnknownHostException, IOException;
+
+    public void setFlag(String chargenFlag);
 }

@@ -91,10 +91,10 @@ public class ChargenClientDriver {
         if (chargenClient != null)
         {
             PrintStream out = new PrintStream(System.out);
+            chargenClient.setFlag(chargenFlag);
             chargenClient.printToStream(out);
         }
     }
-
 
     private static void usage() {
         System.err.println(

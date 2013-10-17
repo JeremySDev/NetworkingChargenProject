@@ -23,9 +23,7 @@ public class ChargenTcpClient extends AbstractChargenClient {
 
     /* make a socket on the client side */
     Socket clientSocket = null;
-    /* make a socket on the server side based on the host and port */
-    Socket serverSocket = null;
-    int num = 1;
+
     /**
      * The constructor for ChargenTcpClient sets the host and port using
      * AbstractChargenClient's constructor
@@ -33,34 +31,33 @@ public class ChargenTcpClient extends AbstractChargenClient {
      * @param host - the host's InetAddress.
      * @param port - the port number to use.
      */
-    public ChargenTcpClient(InetAddress host, int port) {
+    public ChargenTcpClient(InetAddress host, int port)
+    {
         super(host, port);
     }
 
     /**
      * @param out - a PrintStream object
      */
-    public void printToStream(PrintStream out) throws IOException {
+    public void printToStream(PrintStream out) throws IOException
+    {
         socketHelper();
         Scanner outputFromServer = new Scanner(new InputStreamReader(
                 clientSocket.getInputStream()));
         out.print(outputFromServer.next());
         out.close();
         clientSocket.close();
-        serverSocket.close();
     }
 
-    private void socketHelper() throws IOException {
+    private void socketHelper() throws IOException
+    {
         /* make a socket on the client side */
         clientSocket = new Socket(this.getHost(), this.getPort());
         System.out.println("Made Client Socket");
 
-        /* connect the two sockets */
-        //clientSocket.connect(serverSocket.getRemoteSocketAddress());
-        //System.out.println("Connected Client and Server");
-
         System.out.println("Flag: " + this.getFlag());
-        /*if (!((this.getFlag()).equals(null))) {*/
+        if (!(this.getFlag()).equals(null))
+        {
         String flag = this.getFlag();
         System.out.println("Set Flag");
 
@@ -72,6 +69,6 @@ public class ChargenTcpClient extends AbstractChargenClient {
 
         outToServer.print(flag + "\r\n");
         System.out.println("Print Flag");
-        /*}*/
+        }
     }
 }

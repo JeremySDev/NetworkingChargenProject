@@ -69,7 +69,7 @@ public abstract class AbstractChargenClient implements ChargenClient {
         return this.port;
     }
 
-    protected void setFlag(String flag)
+    public void setFlag(String flag)
     {
         this.flag = flag;
     }

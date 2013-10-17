@@ -64,31 +64,16 @@ public class ChargenTcpServer extends AbstractChargenServer {
             Scanner inFromClient = new Scanner(new InputStreamReader(clientSocket.getInputStream()));
             System.out.println("Made Buffered Reader");
 
-            DataOutputStream outToClient = new DataOutputStream(clientSocket.getOutputStream());
+            PrintStream outToClient = new PrintStream(clientSocket.getOutputStream());
             System.out.println("Made Data output stream");
 
+            flagHelper(inFromClient.next());
+            System.out.println("Called Flag helper");
 
-            System.out.println("Flag: " + flag);
-            flag = inFromClient.next();
-
-            System.out.println("Flag: " + flag);
-
-
-            /*switch (flag) {
-                case "NAN":
-                    this.changeSource(new NonAlphaNumericCharacterSource());
-                    break;
-                case "AN":
-                    this.changeSource(new AlphaNumericCharacterSource());
-                    break;
-                case "N":
-                    this.changeSource(new NumericCharacterSource());
-                    break;
-                default:
-                    this.changeSource(new DefactoChargenCharacterSource());
-                    break;
-            }*/
-            //outputStream.println((this.getCharacterSource()).getNextChar());
+            while ((this.getCharacterSource().getNextChar()) != '\0')
+            {
+                outToClient.println((this.getCharacterSource()).getNextChar());
+            }
         }
         catch (IOException ioe)
         {
@@ -97,5 +82,24 @@ public class ChargenTcpServer extends AbstractChargenServer {
             System.exit(1);
         }
         System.out.println("Flag: " + flag);
+    }
+
+    private void flagHelper(String flag)
+    {
+        System.out.println("Flag: " + flag);
+        switch (flag) {
+            case "NAN":
+                this.changeSource(new NonAlphaNumericCharacterSource());
+                break;
+            case "AN":
+                this.changeSource(new AlphaNumericCharacterSource());
+                break;
+            case "N":
+                this.changeSource(new NumericCharacterSource());
+                break;
+            default:
+                this.changeSource(new DefactoChargenCharacterSource());
+                break;
+        }
     }
 }
