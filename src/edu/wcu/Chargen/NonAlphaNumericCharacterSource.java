@@ -7,17 +7,16 @@ package edu.wcu.Chargen;
  */
 public class NonAlphaNumericCharacterSource implements ChargenCharacterSource {
 
+    String data = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+
     public char getNextChar()
     {
-        char returnMe = 'f';
-
-        for (int i = 0; i < 30; i++)
+        char character = 'f';
+        for (int i = 0; i < data.length(); i++)
         {
-            String data = "!#$%&'()*+,-./:;<=>?@[]^_^`{|}~";
-            returnMe = data.charAt(i);
+            character = data.charAt(i);
         }
-
-        return returnMe;
+        return character;
     }
 
 }

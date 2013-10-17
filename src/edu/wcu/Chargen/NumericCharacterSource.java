@@ -6,23 +6,16 @@ package edu.wcu.Chargen;
  * @version 10/8/13.
  */
 public class NumericCharacterSource implements ChargenCharacterSource {
-    private int placeInArray = 0;
+
+    String data = "0123456789";
 
     public char getNextChar()
     {
-        char returnMe = 'f';
-
-        if (placeInArray == 10)
+        char character = 'f';
+        for (int i = 0; i < data.length(); i++)
         {
-            placeInArray = 0;
+            character = data.charAt(i);
         }
-
-        if (!(placeInArray > 9) && !(placeInArray < 0))
-        {
-            String data = "0123456789";
-            returnMe = data.charAt(placeInArray++);
-        }
-
-        return returnMe;
+        return character;
     }
 }

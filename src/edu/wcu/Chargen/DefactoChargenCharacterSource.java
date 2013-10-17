@@ -11,12 +11,16 @@ package edu.wcu.Chargen;
  */
 public class DefactoChargenCharacterSource implements ChargenCharacterSource {
 
-    private int placeInArray = 0;
+    String data = "!#$%&'()*+,-./0123456789:;<=>?@ABCDEF" +
+            "GHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 
     public char getNextChar()
     {
-        String data = "!#$%&'()*+,-./0123456789:;<=>?@ABCDEF" +
-                "GHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~";
-        return data.charAt(placeInArray++);
+        char character = 'f';
+        for (int i = 0; i < data.length(); i++)
+        {
+            character = data.charAt(i);
+        }
+        return character;
     }
 }
