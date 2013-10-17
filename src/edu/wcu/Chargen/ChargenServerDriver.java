@@ -49,17 +49,21 @@ public class ChargenServerDriver {
             portNum = Integer.decode(args[1]);
         }
 
-        if (serverType.equalsIgnoreCase("TCP"))
-        {
-            chargenServer = new ChargenTcpServer(portNum);
+        if (serverType != null) {
+            if (serverType.equalsIgnoreCase("TCP"))
+            {
+                chargenServer = new ChargenTcpServer(portNum);
+            }
+
+            if (serverType.equalsIgnoreCase("UDP"))
+            {
+                chargenServer = new ChargenUdpServer(portNum);
+            }
         }
 
-        if (serverType.equalsIgnoreCase("UDP"))
-        {
-            chargenServer = new ChargenUdpServer(portNum);
+        if (chargenServer != null) {
+            chargenServer.listen();
         }
-
-        chargenServer.listen();
     }
 
     private static void usage() {

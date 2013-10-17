@@ -71,21 +71,23 @@ public class ChargenClientDriver {
         }
 
         /* Check what the client type needs to be */
-        if (clientType.equalsIgnoreCase("TCP"))
-        {
-            /* create a chargenClient hostname and port number given */
-            chargenClient = new ChargenTcpClient(
-                    /* create an InetAddress from the String hostName */
-                    InetAddress.getByName(hostName), portNum);
-        }
-        else if (clientType.equalsIgnoreCase("UDP"))
-        {
-            chargenClient = new ChargenUdpClient(
-                    InetAddress.getByName(hostName), portNum);
-        }
-        else
-        {
-            usage();
+        if (clientType != null) {
+            if (clientType.equalsIgnoreCase("TCP"))
+            {
+                /* create a chargenClient hostname and port number given */
+                chargenClient = new ChargenTcpClient(
+                        /* create an InetAddress from the String hostName */
+                        InetAddress.getByName(hostName), portNum);
+            }
+            else if (clientType.equalsIgnoreCase("UDP"))
+            {
+                chargenClient = new ChargenUdpClient(
+                        InetAddress.getByName(hostName), portNum);
+            }
+            else
+            {
+                usage();
+            }
         }
 
         if (chargenClient != null)
