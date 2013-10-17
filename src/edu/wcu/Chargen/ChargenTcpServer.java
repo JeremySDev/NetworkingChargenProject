@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
 /**
  * ChargenTcpServer is a class that extends AbstractChargenServer and provides
@@ -60,7 +61,7 @@ public class ChargenTcpServer extends AbstractChargenServer {
             Socket clientSocket = serverSocket.accept();
             System.out.println("Server socket accepted client");
 
-            BufferedReader inFromClient = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            Scanner inFromClient = new Scanner(new InputStreamReader(clientSocket.getInputStream()));
             System.out.println("Made Buffered Reader");
 
             DataOutputStream outToClient = new DataOutputStream(clientSocket.getOutputStream());
@@ -68,8 +69,7 @@ public class ChargenTcpServer extends AbstractChargenServer {
 
 
             System.out.println("Flag: " + flag);
-
-            flag = inFromClient.readLine();
+            flag = inFromClient.next();
 
             System.out.println("Flag: " + flag);
 

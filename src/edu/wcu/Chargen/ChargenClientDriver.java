@@ -51,20 +51,20 @@ public class ChargenClientDriver {
 
         /* TODO: ask Kreahling if we should exit or try to get the right server type */
         /* Take the two mandatory arguments to set the server type and host */
-        else if (args.length >= 2)
+        if (args.length >= 2)
         {
             clientType = args[0];
             hostName = args[1];
         }
 
         /* if there is a third arg set that as the port number */
-        else if (args.length >= 3)
+        if (args.length >= 3)
         {
             portNum = Integer.decode(args[2]);
         }
 
         /* if there is a third arg set that as the flag for our chargen server*/
-        else if (args.length >= 4)
+        if (args.length >= 4)
         {
             // TODO: pass to UDP/TCP clients!
             chargenFlag = args[3];
