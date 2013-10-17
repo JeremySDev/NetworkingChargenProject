@@ -7,21 +7,14 @@ package edu.wcu.Chargen;
  */
 public class NonAlphaNumericCharacterSource implements ChargenCharacterSource {
 
-    private int placeInArray = 0;
-
     public char getNextChar()
     {
         char returnMe = 'f';
 
-        if (placeInArray == 30)
-        {
-            placeInArray = 0;
-        }
-        //for loop
-        if (!(placeInArray > 29) && !(placeInArray < 0))
+        for (int i = 0; i < 30; i++)
         {
             String data = "!#$%&'()*+,-./:;<=>?@[]^_^`{|}~";
-            returnMe = data.charAt(placeInArray++);
+            returnMe = data.charAt(i);
         }
 
         return returnMe;
