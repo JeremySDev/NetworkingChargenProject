@@ -56,8 +56,8 @@ public class ChargenTcpClient extends AbstractChargenClient {
         System.out.println("Made Client Socket");
 
         System.out.println("Flag: " + this.getFlag());
-        if (this.getFlag() == null)
-        {
+        //if (this.getFlag() == null)
+        //{
         String flag = this.getFlag();
         System.out.println("Set Flag");
 
@@ -69,6 +69,6 @@ public class ChargenTcpClient extends AbstractChargenClient {
 
         outToServer.print(flag + "\r\n");
         System.out.println("Print Flag");
-        }
+        //}
     }
 }
