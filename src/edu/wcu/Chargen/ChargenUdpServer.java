@@ -18,7 +18,7 @@ import java.util.Random;
 public class ChargenUdpServer extends AbstractChargenServer {
 
     /** The default port number for Chargen protocol. */
-    private static final int DEFAULT_PORT = 19;
+    private static final int DEFAULT_PORT = 12346; //19;
 
     /** The port number for this server. */
     private int serverPort;
