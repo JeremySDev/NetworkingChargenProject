@@ -1,12 +1,8 @@
 package edu.wcu.Chargen;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.SocketException;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
 import java.io.PrintStream;
+import java.net.InetAddress;
 
 /**
  * ChargenClientDriver is the entry point of the application. It includes one
