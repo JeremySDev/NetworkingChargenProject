@@ -93,7 +93,7 @@ public class ChargenTcpServer extends AbstractChargenServer {
         catch (IOException ioe) {
             System.err.println("Unable to read data from an open socket.");
             System.err.println(ioe.toString());
-            System.exit(1);
+            //System.exit(1);
         }
         finally
         {
@@ -106,7 +106,7 @@ public class ChargenTcpServer extends AbstractChargenServer {
             catch (IOException e) {
                 System.err.println("Unable to read data from an open socket.");
                 System.err.println(e.toString());
-                System.exit(1);
+                //System.exit(1);
             }
         }
         System.out.println("Flag: " + flag);
