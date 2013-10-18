@@ -94,7 +94,7 @@ public class ChargenUdpClient extends AbstractChargenClient {
      */
     private DatagramSocket makeSocket(int port) throws SocketException, UnknownHostException
     {
-        DatagramSocket newSocket = null;
+        DatagramSocket newSocket;
 
         // create new socket
         newSocket = new DatagramSocket(port, InetAddress.getLocalHost());
@@ -117,7 +117,7 @@ public class ChargenUdpClient extends AbstractChargenClient {
                                       InetAddress host, int port)
             throws UnknownHostException
     {
-        DatagramPacket packet = null;
+        DatagramPacket packet;
 
         // create new packet
         packet = new DatagramPacket(buffer, length, host, port);

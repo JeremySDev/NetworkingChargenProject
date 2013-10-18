@@ -111,7 +111,7 @@ public class ChargenUdpServer extends AbstractChargenServer {
                                                            receiveData.length);
 
         // Packet to hold server's data
-        DatagramPacket sendPacket = null;
+        DatagramPacket sendPacket;
 
         // Generated sequence of chars
         String charSequence = "";

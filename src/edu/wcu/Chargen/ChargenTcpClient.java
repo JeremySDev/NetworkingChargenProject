@@ -45,10 +45,17 @@ public class ChargenTcpClient extends AbstractChargenClient {
      */
     public void printToStream(PrintStream out) throws IOException
     {
+        /* Call the helper method */
         socketHelper();
+
+        /* Create a Scanner to get the output of the Chargen server */
         Scanner outputFromServer = new Scanner(new InputStreamReader(
                 clientSocket.getInputStream()));
+
+        /* Print the output of the server to the screen */
         out.print(outputFromServer.next());
+
+        /* close sockets and streams */
         out.close();
         clientSocket.close();
     }
@@ -64,22 +71,20 @@ public class ChargenTcpClient extends AbstractChargenClient {
     {
         /* make a socket on the client side */
         clientSocket = new Socket(this.getHost(), this.getPort());
-        System.out.println("Made Client Socket");
 
-        System.out.println("Flag: " + this.getFlag());
+        /* if statement to determine if we need to send a flag */
         if (this.getFlag() != null)
         {
+            /* Set the flag to a Sting */
             String flag = this.getFlag();
-            System.out.println("Set Flag");
 
-            //BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(clientSocket.getInputStream()));
-            //System.out.println("Made buffered reader");
+            /* Create an print stream to send the flag to the server */
+            PrintStream outToServer = new PrintStream(
+                    clientSocket.getOutputStream());
 
-            PrintStream outToServer = new PrintStream(clientSocket.getOutputStream());
-            System.out.println("Made Data Output Stream");
-
+            /* Send the flag to the Server */
             outToServer.print(flag + "\r\n");
-            System.out.println("Print Flag");
+            outToServer.close();
         }
     }
 }
