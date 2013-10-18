@@ -19,7 +19,7 @@ import java.util.Scanner;
  */
 public class ChargenTcpServer extends AbstractChargenServer {
 
-    private static final int DEFAULT_PORT = 12343;// TODO: Can't do well-known port 19;
+    private static final int DEFAULT_PORT = 12343;
 
     private final int port;
 
