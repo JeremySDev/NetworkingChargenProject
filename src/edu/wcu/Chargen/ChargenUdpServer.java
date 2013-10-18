@@ -106,15 +106,10 @@ public class ChargenUdpServer extends AbstractChargenServer {
      * The service only send one datagram in response to each received
      * datagram, so there is no concern about the service sending data faster
      * than the user can process it.
-     * @throws IOException - if there are problems closing a socket.
+     * @throws ChargenServerException - if there are problems closing a socket.
      */
-    public void listen() throws IOException
+    public void listen()
     {
-        /* TODO: Classes
-        that provide concrete implementations of listen() will catch the protocol-specic exceptions, wrap those
-        exceptions in a ChargenServerException, and then throw that exception. This approach passes along all the
-        error information in the wrapped object, but keeps the interface \clean".*/
-
         // Packet to receive client's data
         DatagramPacket receievePacket = new DatagramPacket(receiveData,
                                                            receiveData.length);
@@ -135,34 +130,13 @@ public class ChargenUdpServer extends AbstractChargenServer {
         // wait to receive a datagram
         while (true)
         {
-            // call helper method to set up and send packet
-            listenHelp(receievePacket, sendPacket, charSequence, randomNum,
-                    random);
-
-            /*// receive a packet from the client
-            serverSocket.receive(receievePacket);
-
-            // TODO: works?
-            if (receievePacket.getData() != null)
-            {
-                // generate a random number from 0 to 512
-                randomNum = random.nextInt(513);
-
-                // generate an appropriate char sequence (for loop) use getNext
-                for (int i = 0; i < randomNum; i++)
-                {
-                    charSequence = charSequence +
-                                   String.valueOf(typeChars.getNextChar());
-                }
-
-                // put the char sequence into the sending byte array
-                sendData = charSequence.getBytes();
-
-                // send this sequence to the client
-                sendPacket = new DatagramPacket(sendData, sendData.length,
-                        receievePacket.getAddress(), receievePacket.getPort());
-                serverSocket.send(sendPacket);
-            }*/
+            try{
+                // call helper method to set up and send packet
+                listenHelp(receievePacket, sendPacket, charSequence, randomNum,
+                        random);
+            } catch(IOException ioe) {
+                throw new ChargenServerException(ioe);
+            }
         }
 
         // TODO: close the socket after done listening... here?
@@ -171,8 +145,9 @@ public class ChargenUdpServer extends AbstractChargenServer {
 
     /**
      * Helper method assists listen() build a packet and send it.
-     *
-     * @param
+     * @param receivePacket - The packet received from the client.
+     * @param sendPacket - The packet to be sent to the client.
+     * @param charSequence -
      */
     private void listenHelp(DatagramPacket receivePacket,
                             DatagramPacket sendPacket, String charSequence,
@@ -181,7 +156,6 @@ public class ChargenUdpServer extends AbstractChargenServer {
         // receive a packet from the client
         serverSocket.receive(receivePacket);
 
-        // TODO: Works?
         if(receivePacket.getData() != null)
         {
             // generate random number from 0 to 512
