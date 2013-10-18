@@ -21,6 +21,7 @@ public class ChargenTcpClient extends AbstractChargenClient {
     /* make a socket on the client side */
     Socket clientSocket = null;
 
+    /* Print stream to get data from the client */
     PrintStream outToServer;
 
     /**
@@ -55,9 +56,9 @@ public class ChargenTcpClient extends AbstractChargenClient {
         out.println(outputFromServer.next());
 
         /* close sockets and streams */
-        out.close();
         clientSocket.close();
         outToServer.close();
+        out.close();
     }
 
     /**

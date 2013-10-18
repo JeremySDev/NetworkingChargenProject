@@ -15,6 +15,7 @@ public class NumericCharacterSource implements ChargenCharacterSource {
         for (int i = 0; i < data.length(); i++)
         {
             character = data.charAt(i);
+            return character;
         }
         return character;
     }

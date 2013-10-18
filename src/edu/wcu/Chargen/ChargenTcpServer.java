@@ -91,6 +91,10 @@ public class ChargenTcpServer extends AbstractChargenServer {
         System.out.println("Flag: " + flag);
     }
 
+    /**
+     *
+     * @param flag
+     */
     private void flagHelper(String flag)
     {
         System.out.println("Flag: " + flag);
