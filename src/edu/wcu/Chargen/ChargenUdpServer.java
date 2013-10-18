@@ -126,7 +126,6 @@ public class ChargenUdpServer extends AbstractChargenServer {
         Random random = new Random();
 
         // TODO: Needs to stop at some time, exception, error?
-        // TODO: Move innards to helper method!
         // wait to receive a datagram
         while (true)
         {
