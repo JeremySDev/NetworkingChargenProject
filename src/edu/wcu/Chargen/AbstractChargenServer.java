@@ -22,7 +22,7 @@ public abstract class AbstractChargenServer implements ChargenServer {
     /* The number of the port to be used */
     private final int port;
 
-    /**/
+    /* The character source to be used */
     private ChargenCharacterSource source;
 
     /**
@@ -102,7 +102,7 @@ public abstract class AbstractChargenServer implements ChargenServer {
     }
 
     /**
-     * listen
+     * listen for a connection from a client
      */
     public void listen() throws IOException
     {

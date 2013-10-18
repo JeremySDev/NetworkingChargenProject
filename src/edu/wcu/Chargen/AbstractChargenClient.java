@@ -69,15 +69,27 @@ public abstract class AbstractChargenClient implements ChargenClient {
         return this.port;
     }
 
+    /**
+     * setFlag - sets the flag which is to be used to determine what Character
+     * source should be used
+     *
+     * @param flag
+     */
     public void setFlag(String flag)
     {
         this.flag = flag;
     }
 
+    /**
+     * getFlag - gets the flag which is to be used to determine what Character
+     * source should be used
+     *
+     */
     protected String getFlag()
     {
         return this.flag;
     }
+
     /**
      * Abstract method used to print data received from the server into a given
      * output stream.
