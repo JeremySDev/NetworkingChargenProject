@@ -111,7 +111,7 @@ public class ChargenUdpServer extends AbstractChargenServer {
                                                            receiveData.length);
 
         // Packet to hold server's data
-        DatagramPacket sendPacket;
+        DatagramPacket sendPacket = null;
 
         // Generated sequence of chars
         String charSequence = "";
@@ -127,7 +127,11 @@ public class ChargenUdpServer extends AbstractChargenServer {
         // wait to receive a datagram
         while (true)
         {
-            // receive a packet from the client
+            // call helper method to set up and send packet
+            listenHelp(receievePacket, sendPacket, charSequence, randomNum,
+                    random);
+
+            /*// receive a packet from the client
             serverSocket.receive(receievePacket);
 
             // TODO: works?
@@ -150,10 +154,45 @@ public class ChargenUdpServer extends AbstractChargenServer {
                 sendPacket = new DatagramPacket(sendData, sendData.length,
                         receievePacket.getAddress(), receievePacket.getPort());
                 serverSocket.send(sendPacket);
-            }
+            }*/
         }
 
         // TODO: close the socket after done listening... here?
         //serverSocket.close();
+    }
+
+    /**
+     * Helper method assists listen() build a packet and send it.
+     *
+     * @param
+     */
+    private void listenHelp(DatagramPacket receivePacket,
+                            DatagramPacket sendPacket, String charSequence,
+                            int randomNum, Random random) throws IOException
+    {
+        // receive a packet from the client
+        serverSocket.receive(receivePacket);
+
+        // TODO: Works?
+        if(receivePacket.getData() != null)
+        {
+            // generate random number from 0 to 512
+            randomNum = random.nextInt(513);
+
+            // generate an appropriate char sequence
+            for(int i = 0; i < randomNum; i++)
+            {
+                charSequence = charSequence +
+                        String.valueOf(typeChars.getNextChar());
+            }
+
+            // put the char sequence into the sending byte array
+            sendData = charSequence.getBytes();
+
+            // send this sequence to the client
+            sendPacket = new DatagramPacket(sendData, sendData.length,
+                    receivePacket.getAddress(), receivePacket.getPort());
+            serverSocket.send(sendPacket);
+        }
     }
 }
