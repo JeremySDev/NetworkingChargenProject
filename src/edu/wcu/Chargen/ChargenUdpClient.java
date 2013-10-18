@@ -12,7 +12,8 @@ import java.net.UnknownHostException;
 /**
  * ChargenUDPClient is a class that extends AbstractChargenClient and provides
  * a concrete implementation of the printToStream() method using UDP. Data
- * received from the remote host is printed to the specified PrintStream.
+ * received from the remote host is printed to the specified PrintStream. Runs
+ * on localHost (agora).
  *
  * @author Jeremy Stilwell
  * @author Alisha Hayman
