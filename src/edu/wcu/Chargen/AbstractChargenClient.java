@@ -73,7 +73,7 @@ public abstract class AbstractChargenClient implements ChargenClient {
      * setFlag - sets the flag which is to be used to determine what Character
      * source should be used
      *
-     * @param flag determines to Charactor source to be used
+     * @param flag determines to Character source to be used
      */
     public void setFlag (String flag)
     {
