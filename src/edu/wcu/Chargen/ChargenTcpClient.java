@@ -53,13 +53,12 @@ public class ChargenTcpClient extends AbstractChargenClient {
                 clientSocket.getInputStream()));
 
         /* Print the output of the server to the screen */
-        while (true)
-            out.println(outputFromServer.next());
+        out.println(outputFromServer.next());
 
         /* close sockets and streams */
-        //clientSocket.close();
-        //outToServer.close();
-        //out.close();
+        clientSocket.close();
+        outToServer.close();
+        out.close();
     }
 
     /**
