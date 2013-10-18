@@ -25,22 +25,22 @@ public class ChargenTcpServer extends AbstractChargenServer {
 
     private final ChargenCharacterSource source;
 
-    public ChargenTcpServer()
+    public ChargenTcpServer ()
     {
         this(DEFAULT_PORT, new DefactoChargenCharacterSource());
     }
 
-    public ChargenTcpServer(int port)
+    public ChargenTcpServer (int port)
     {
         this(port, new DefactoChargenCharacterSource());
     }
 
-    public ChargenTcpServer(ChargenCharacterSource source)
+    public ChargenTcpServer (ChargenCharacterSource source)
     {
         this(DEFAULT_PORT, source);
     }
 
-    public ChargenTcpServer(int port, ChargenCharacterSource source)
+    public ChargenTcpServer (int port, ChargenCharacterSource source)
     {
         this.port = port;
         this.source = source;
@@ -50,26 +50,28 @@ public class ChargenTcpServer extends AbstractChargenServer {
      *
      */
     @Override
-    public void listen()
+    public void listen ()
     {
         String flag = "cats";
+        ServerSocket serverSocket = null;
+        Socket clientSocket = null;
+        Scanner inFromClient = null;
+        PrintStream outToClient = null;
+
         try
-        (
-           /* Make a connection to a client socket */
-           ServerSocket serverSocket = new ServerSocket(this.port);
+        {
+            /* Make a connection to a client socket */
+            serverSocket = new ServerSocket(this.port);
 
             /* Connect to a client socket */
-            Socket clientSocket = serverSocket.accept();
+            clientSocket = serverSocket.accept();
 
             /* Create a scanner to catch the flag input of the client */
-            Scanner inFromClient = new Scanner(new InputStreamReader(
+            inFromClient = new Scanner(new InputStreamReader(
                     clientSocket.getInputStream()));
 
             /* Create a print stream from the client socket to send the chars */
-            PrintStream outToClient = new PrintStream(
-                    clientSocket.getOutputStream());
-        ) {
-
+            outToClient = new PrintStream(clientSocket.getOutputStream());
 
             /* get the flag from the client */
             flag = inFromClient.next();
@@ -78,14 +80,14 @@ public class ChargenTcpServer extends AbstractChargenServer {
             while (!clientSocket.isOutputShutdown())
             {
                 outToClient.println(this.getCharacterSource().getNextChar());
-                System.out.println(this.getCharacterSource().getNextChar());
+                System.out.println("in the while");
             }
             System.out.println("hello");
 
-            inFromClient.close();
-            outToClient.close();
-            clientSocket.close();
-            serverSocket.close();
+            //inFromClient.close();
+            //outToClient.close();
+            //clientSocket.close();
+            //serverSocket.close();
             listen();
         }
         catch (IOException ioe) {
@@ -93,18 +95,30 @@ public class ChargenTcpServer extends AbstractChargenServer {
             System.err.println(ioe.toString());
             System.exit(1);
         }
+        finally
+        {
+            inFromClient.close();
+            outToClient.close();
+            try {
+                clientSocket.close();
+                serverSocket.close();
+            }
+            catch (IOException e) {
+                System.err.println("Unable to read data from an open socket.");
+                System.err.println(e.toString());
+                System.exit(1);
+            }
+        }
         System.out.println("Flag: " + flag);
     }
 
     /**
-     *
      * @param flag
      */
-    private void flagHelper(String flag)
+    private void flagHelper (String flag)
     {
         System.out.println("Flag: " + flag);
-        switch (flag)
-        {
+        switch (flag) {
             case "NAN":
                 this.changeSource(new NonAlphaNumericCharacterSource());
                 break;
