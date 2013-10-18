@@ -3,6 +3,8 @@ package edu.wcu.Chargen;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.SocketException;
+import java.rmi.ServerException;
 import java.util.Random;
 
 /**
@@ -41,9 +43,9 @@ public class ChargenUdpServer extends AbstractChargenServer {
     /**
      * Default constructor that creates a new server with default port and char
      * generation type.
-     * throws IOException - if an I/O error occurs when opening the socket.
+     * throws SocketException - if an I/O error occurs when opening the socket.
      */
-    public ChargenUdpServer() throws IOException
+    public ChargenUdpServer() throws SocketException
     {
         this(DEFAULT_PORT, new DefactoChargenCharacterSource());
     }
@@ -79,14 +81,17 @@ public class ChargenUdpServer extends AbstractChargenServer {
      *                 to generate.
      * @throws IOException - if an I/O error occurs when opening the socket.
      */
-    public ChargenUdpServer(int port, ChargenCharacterSource source) throws
-            IOException
+    public ChargenUdpServer(int port, ChargenCharacterSource source)
     {
-        serverPort = port;
-        typeChars = source;
-        sendData = new byte[256];
-        receiveData = new byte[256];
-        serverSocket = new DatagramSocket(serverPort);
+        try{
+            serverPort = port;
+            typeChars = source;
+            sendData = new byte[256];
+            receiveData = new byte[256];
+            serverSocket = new DatagramSocket(serverPort);
+        } catch (IOException ioe){
+            throw new ChargenServerException(ioe);
+        }
     }
 
     /**

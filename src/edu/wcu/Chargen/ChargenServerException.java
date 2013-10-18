@@ -19,9 +19,9 @@ package edu.wcu.Chargen;
  * @author Alisha Hayman
  * @version 10/8/13.
  */
-public class ChargenServerException extends Exception {
-    public ChargenServerException(String message)
+public class ChargenServerException extends RuntimeException {// {
+    public ChargenServerException(Throwable t)
     {
-        super(message);
+        super(t);
     }
 }
