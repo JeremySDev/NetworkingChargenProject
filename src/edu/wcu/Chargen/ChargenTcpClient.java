@@ -21,6 +21,8 @@ public class ChargenTcpClient extends AbstractChargenClient {
     /* make a socket on the client side */
     Socket clientSocket = null;
 
+    PrintStream outToServer;
+
     /**
      * The constructor for ChargenTcpClient sets the host and port using
      * AbstractChargenClient's constructor
@@ -55,6 +57,7 @@ public class ChargenTcpClient extends AbstractChargenClient {
         /* close sockets and streams */
         out.close();
         clientSocket.close();
+        outToServer.close();
     }
 
     /**
@@ -76,12 +79,11 @@ public class ChargenTcpClient extends AbstractChargenClient {
             String flag = this.getFlag();
 
             /* Create an print stream to send the flag to the server */
-            PrintStream outToServer = new PrintStream(
+            outToServer = new PrintStream(
                     clientSocket.getOutputStream());
 
             /* Send the flag to the Server */
             outToServer.print(flag + "\r\n");
-            //outToServer.close();
         }
     }
 }
