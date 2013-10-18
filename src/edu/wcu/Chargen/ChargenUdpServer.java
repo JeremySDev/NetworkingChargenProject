@@ -104,7 +104,10 @@ public class ChargenUdpServer extends AbstractChargenServer {
      */
     public void listen() throws IOException
     {
-        // TODO: Probably should use a helper! Too long!
+        /* TODO: Classes
+        that provide concrete implementations of listen() will catch the protocol-specic exceptions, wrap those
+        exceptions in a ChargenServerException, and then throw that exception. This approach passes along all the
+        error information in the wrapped object, but keeps the interface \clean".*/
 
         // Packet to receive client's data
         DatagramPacket receievePacket = new DatagramPacket(receiveData,
