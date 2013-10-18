@@ -77,6 +77,8 @@ public class ChargenTcpServer extends AbstractChargenServer {
             flagHelper(flag);
             outToClient.println(this.getCharacterSource().getNextChar());
 
+
+
             inFromClient.close();
             outToClient.close();
             clientSocket.close();
