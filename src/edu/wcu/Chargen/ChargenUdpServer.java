@@ -27,16 +27,16 @@ public class ChargenUdpServer extends AbstractChargenServer {
     private DatagramSocket serverSocket;
 
     /** Array of bytes to hold data to receive from client. */
-    byte[] receiveData;
+    private byte[] receiveData;
 
     /** Array of bytes to hold data to send to client. */
-    byte[] sendData;
+    private byte[] sendData;
 
     /**
      * Determines whether to generate AlphaNumeric, NonAlphaNumeric, Numeric, or
      * Defacto characters.
      */
-    ChargenCharacterSource typeChars;
+    private ChargenCharacterSource typeChars;
 
     /**
      * Default constructor that creates a new server with default port and char
@@ -122,7 +122,8 @@ public class ChargenUdpServer extends AbstractChargenServer {
         // Random number generator
         Random random = new Random();
 
-        // TODO: Needs to stop at some time
+        // TODO: Needs to stop at some time, exception, error?
+        // TODO: Move innards to helper method!
         // wait to receive a datagram
         while (true)
         {

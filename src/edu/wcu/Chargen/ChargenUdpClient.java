@@ -60,8 +60,6 @@ public class ChargenUdpClient extends AbstractChargenClient {
     public void printToStream(PrintStream out) throws SocketTimeoutException,
             SocketException, UnknownHostException, IOException
     {
-        //ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
         /* call helper method to create the clientSocket */
         clientSocket = makeSocket(LOCAL_PORT);
 
@@ -73,9 +71,6 @@ public class ChargenUdpClient extends AbstractChargenClient {
         communicate(clientSocket, packet, buffer);
 
         /* print the data from the server using the out PrintStream */
-        /* TODO: What is this even doing? Is it printing? Where? */
-        /*out = new PrintStream(baos);
-        baos.write(buffer); // move above "out = " line?*/
         out.println(new String(packet.getData()));
 
         /* close the socket and stream */
