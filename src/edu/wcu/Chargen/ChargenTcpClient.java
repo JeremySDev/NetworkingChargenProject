@@ -53,7 +53,7 @@ public class ChargenTcpClient extends AbstractChargenClient {
                 clientSocket.getInputStream()));
 
         /* Print the output of the server to the screen */
-        out.print(outputFromServer.next());
+        out.println(outputFromServer.next());
 
         /* close sockets and streams */
         out.close();
@@ -84,7 +84,7 @@ public class ChargenTcpClient extends AbstractChargenClient {
 
             /* Send the flag to the Server */
             outToServer.print(flag + "\r\n");
-            outToServer.close();
+            //outToServer.close();
         }
     }
 }
