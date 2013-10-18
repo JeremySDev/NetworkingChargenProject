@@ -37,7 +37,11 @@ public class ChargenTcpClient extends AbstractChargenClient {
     }
 
     /**
+     * printToStream - calls the methods that are necessary to get output from a
+     * server.
+     *
      * @param out - a PrintStream object
+     * @throws java.io.IOException
      */
     public void printToStream(PrintStream out) throws IOException
     {
@@ -49,6 +53,13 @@ public class ChargenTcpClient extends AbstractChargenClient {
         clientSocket.close();
     }
 
+    /**
+     * socketHelper - helper method, called by printToStream, that does the work
+     * of setting up a socket and connecting it to the server. It also check to
+     * see if a flag is set so that it can send the server that flag.
+     *
+     * @throws IOException
+     */
     private void socketHelper() throws IOException
     {
         /* make a socket on the client side */
@@ -56,19 +67,19 @@ public class ChargenTcpClient extends AbstractChargenClient {
         System.out.println("Made Client Socket");
 
         System.out.println("Flag: " + this.getFlag());
-        //if (this.getFlag() == null)
-        //{
-        String flag = this.getFlag();
-        System.out.println("Set Flag");
+        if (this.getFlag() != null)
+        {
+            String flag = this.getFlag();
+            System.out.println("Set Flag");
 
-        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(clientSocket.getInputStream()));
-        System.out.println("Made buffered reader");
+            //BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(clientSocket.getInputStream()));
+            //System.out.println("Made buffered reader");
 
-        PrintStream outToServer = new PrintStream(clientSocket.getOutputStream());
-        System.out.println("Made Data Output Stream");
+            PrintStream outToServer = new PrintStream(clientSocket.getOutputStream());
+            System.out.println("Made Data Output Stream");
 
-        outToServer.print(flag + "\r\n");
-        System.out.println("Print Flag");
-        //}
+            outToServer.print(flag + "\r\n");
+            System.out.println("Print Flag");
+        }
     }
 }
