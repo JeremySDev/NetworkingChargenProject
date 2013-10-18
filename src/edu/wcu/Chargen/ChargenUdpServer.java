@@ -79,7 +79,8 @@ public class ChargenUdpServer extends AbstractChargenServer {
      * @param port - A given port number for the server.
      * @param source - A ChargenCharacterSource determining which types of chars
      *                 to generate.
-     * @throws IOException - if an I/O error occurs when opening the socket.
+     * @throws ChargenServerException - if an I/O error occurs when opening the
+     * socket.
      */
     public ChargenUdpServer(int port, ChargenCharacterSource source)
     {
