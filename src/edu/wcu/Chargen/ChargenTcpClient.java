@@ -60,6 +60,8 @@ public class ChargenTcpClient extends AbstractChargenClient {
             out.print(outputFromServer.next());
         }
 
+
+
         /* close sockets and streams */
         clientSocket.close();
         outToServer.close();
