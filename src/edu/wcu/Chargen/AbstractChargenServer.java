@@ -72,7 +72,7 @@ public abstract class AbstractChargenServer implements ChargenServer {
 
     /**
      * getPort - returns the port number of the AbstractChargenServer.
-     * @return port - the port number
+     * @return - the port number
      */
     protected int getPort()
     {
@@ -83,7 +83,7 @@ public abstract class AbstractChargenServer implements ChargenServer {
      * getCharacterSource - returns the ChargenCharacterSource of the
      * AbstractChargenServer.
      *
-     * @return source - stuff
+     * @return - A CharacterSource.
      */
     protected ChargenCharacterSource getCharacterSource()
     {
@@ -94,7 +94,7 @@ public abstract class AbstractChargenServer implements ChargenServer {
      * changeSource - allows for the modification of the source field in the
      * AbstractChargenServer.
      *
-     * @param source - stuff
+     * @param - A CharacterSource.
      */
     protected void changeSource(ChargenCharacterSource source)
     {
@@ -102,9 +102,12 @@ public abstract class AbstractChargenServer implements ChargenServer {
     }
 
     /**
-     * listen for a connection from a client
+     * Listens for a connection from a client.
+     *
+     * @throws ChargenServerException - If there are problems receiving or
+     *                                  sending a packet.
      */
-    public void listen() throws IOException
+    public void listen() throws ChargenServerException
     {
 
     }
