@@ -1,6 +1,10 @@
 package edu.wcu.Chargen;
 
 /**
+ * The NonAlphaNumericCharacterSource class implements the
+ * ChargenCharacterSource interface and produces a non-alphanumeric character
+ * sequence produced by chargen servers.
+ *
  * @author Jeremy Stilwell
  * @author Alisha Hayman
  * @version 10/8/13.
