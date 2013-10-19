@@ -19,7 +19,14 @@ package edu.wcu.Chargen;
  * @author Alisha Hayman
  * @version 10/8/13.
  */
-public class ChargenServerException extends RuntimeException {// {
+public class ChargenServerException extends RuntimeException {
+
+    /**
+     * Constructor that creates an exception wrapper and passes a given
+     * Throwable object to RuntimeException.
+     *
+     * @param t - A Throwable object to pass to RuntimeException
+     */
     public ChargenServerException(Throwable t)
     {
         super(t);
