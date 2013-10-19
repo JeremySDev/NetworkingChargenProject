@@ -28,7 +28,6 @@ public abstract class AbstractChargenServer implements ChargenServer {
     /**
      * AbstractChargenServer constructor this is the default constructor for the
      * AbstractChargenServer class.
-     *
      */
     public AbstractChargenServer()
     {

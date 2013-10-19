@@ -1,17 +1,24 @@
 package edu.wcu.Chargen;
 
 /**
+ * This class generates a sequence of alphanumeric chars.
  * @author Jeremy Stilwell
  * @author Alisha Hayman
  * @version 10/8/13.
  */
 public class AlphaNumericCharacterSource implements ChargenCharacterSource {
 
-    int placeInArray = 0;
+    /** The index of the array of chars. */
+    private int placeInArray = 0;
 
-    String data = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+    /** An array of chars containing only alphanumerics. */
+    private String data = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
             "abcdefghijklmnopqrstuvwxyz";
 
+    /**
+     * Gets the next char from data and returns it.
+     * @return - A char from the current index of data.
+     */
     public char getNextChar()
     {
         if (placeInArray == data.length())
