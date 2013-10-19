@@ -41,30 +41,34 @@ public class ChargenTcpClient extends AbstractChargenClient {
      * server.
      *
      * @param out - a PrintStream object
-     * @throws java.io.IOException
+     * @throws ChargenServerException - If an input stream cannot be obtained
+     *                                  from the clientSocket or if the client
+     *                                  socket is having trouble closing.
      */
-    public void printToStream(PrintStream out) throws IOException
+    public void printToStream(PrintStream out)
     {
-        /* Call the helper method */
-        socketHelper();
+        try {
+            /* Call the helper method */
+            socketHelper();
 
-        /* Create a Scanner to get the output of the Chargen server */
-        Scanner outputFromServer = new Scanner(new InputStreamReader(
-                clientSocket.getInputStream()));
-        Scanner outputFromServer2 = new Scanner(new InputStreamReader(
-                clientSocket.getInputStream()));
+            /* Create a Scanner to get the output of the Chargen server */
+            Scanner outputFromServer = new Scanner(new InputStreamReader(
+                    clientSocket.getInputStream()));
+            Scanner outputFromServer2 = new Scanner(new InputStreamReader(
+                    clientSocket.getInputStream()));
 
-        /* Print the output of the server to the screen */
-        while (outputFromServer.hasNext())
-        {
-            out.print(outputFromServer.next());
+            /* Print the output of the server to the screen */
+            while (outputFromServer.hasNext())
+            {
+                out.print(outputFromServer.next());
+            }
+
+            /* close sockets and streams */
+            clientSocket.close();
+            out.close();
+        } catch (IOException ioe) {
+            throw new ChargenServerException(ioe);
         }
-
-
-
-        /* close sockets and streams */
-        clientSocket.close();
-        out.close();
     }
 
     /**
@@ -72,26 +76,32 @@ public class ChargenTcpClient extends AbstractChargenClient {
      * of setting up a socket and connecting it to the server. It also check to
      * see if a flag is set so that it can send the server that flag.
      *
-     * @throws IOException
+     * @throws ChargenServerException - If a new socket cannot be created or if
+     *                                  an output stream cannot be obtained from
+     *                                  the client socket.
      */
-    private void socketHelper() throws IOException
+    private void socketHelper()
     {
-        /* make a socket on the client side */
-        clientSocket = new Socket(this.getHost(), this.getPort());
+        try{
+            /* make a socket on the client side */
+            clientSocket = new Socket(this.getHost(), this.getPort());
 
-        /* if statement to determine if we need to send a flag */
-        if (this.getFlag() != null)
-        {
-            /* Set the flag to a Sting */
-            String flag = this.getFlag();
+            /* if statement to determine if we need to send a flag */
+            if (this.getFlag() != null)
+            {
+                /* Set the flag to a Sting */
+                String flag = this.getFlag();
 
-            /* Create an print stream to send the flag to the server */
-            outToServer = new PrintStream(clientSocket.getOutputStream());
+                /* Create an print stream to send the flag to the server */
+                outToServer = new PrintStream(clientSocket.getOutputStream());
 
-            /* Send the flag to the Server */
-            outToServer.print(flag + "\r\n");
-            //outToServer.close();
+                /* Send the flag to the Server */
+                outToServer.print(flag + "\r\n");
+                //outToServer.close();
 
+            }
+        } catch (IOException ioe) {
+            throw new ChargenServerException(ioe);
         }
     }
 }
