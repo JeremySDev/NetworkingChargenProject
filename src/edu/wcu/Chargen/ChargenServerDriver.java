@@ -15,9 +15,10 @@ import java.io.IOException;
  * @version 10/8/13.
  */
 public class ChargenServerDriver {
+    // TODO: Remove throws IO Exception and catch ChargenServerException
     public static void main(String[] args) throws IOException {
         /* default "well-known" chargen port number */
-        int portNum = 12343; // TODO: Can't do well-known port -- 19;
+        int portNum = 12343;
 
         /* Server type of TCP or UDP*/
         String serverType = null;
