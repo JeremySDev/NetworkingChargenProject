@@ -11,11 +11,17 @@ package edu.wcu.Chargen;
  */
 public class DefactoChargenCharacterSource implements ChargenCharacterSource {
 
+    /** The index of the array of chars. */
     private int placeInArray = 0;
 
+    /** An array of chars containing all possible chars. */
     private final String data = "!#$%&'()*+,-./0123456789:;<=>?@ABCDEF" +
             "GHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 
+    /**
+     * Gets the next char from data and returns it.
+     * @return - A char from the current index of data.
+     */
     public char getNextChar()
     {
         if (placeInArray == data.length())
