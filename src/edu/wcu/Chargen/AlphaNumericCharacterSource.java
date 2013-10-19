@@ -1,7 +1,10 @@
 package edu.wcu.Chargen;
 
 /**
- * This class generates a sequence of alphanumeric chars.
+ * The AlphaNumericCharacterSource class implements the ChargenCharacterSource
+ * interface and produces an alphanumeric character sequence produced by
+ * chargen servers.
+ *
  * @author Jeremy Stilwell
  * @author Alisha Hayman
  * @version 10/8/13.

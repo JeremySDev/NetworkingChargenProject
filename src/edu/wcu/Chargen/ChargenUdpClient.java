@@ -21,24 +21,35 @@ import java.net.UnknownHostException;
  */
 public class ChargenUdpClient extends AbstractChargenClient {
 
-    /** Time in milliseconds until timeout. */
+    /**
+     * Time in milliseconds until timeout.
+     */
     private static final int TIMEOUT = 5000;
 
-    /** The port number for the clientSocket. */
+    /**
+     * The port number for the clientSocket.
+     */
     private static final int LOCAL_PORT = 12345;
 
-    /** Client UDP socket. */
+    /**
+     * Client UDP socket.
+     */
     private DatagramSocket clientSocket;
 
-    /** DatagramPacket to hold information to send to server. */
+    /**
+     * DatagramPacket to hold information to send to server.
+     */
     private DatagramPacket packet;
 
-    /** The buffer array of bytes to send. */
+    /**
+     * The buffer array of bytes to send.
+     */
     private byte[] buffer;
 
     /**
      * Constructor initializes fields to a given destination host address and
      * port number.
+     *
      * @param host - The destination host's IP address.
      * @param port - The destination host's port number.
      */
@@ -53,14 +64,12 @@ public class ChargenUdpClient extends AbstractChargenClient {
      * Initiates communications with the UDP server via PrintStream.
      * Data received from the remote host is printed to the specified
      * PrintStream.
+     *
      * @param out - The PrintStream to carry the server's response.
-     * @throws SocketException - when creating a new DatagramSocket.
-     * @throws UnknownHostException - if local host can't be resolved into an
-     * address.
+     * @throws ChargenServerException - If the local host can't be resolved or
+     *                                when creating a new DatagramSocket.
      */
-    public void printToStream(PrintStream out) throws SocketTimeoutException,
-            SocketException, UnknownHostException, IOException
-    {
+    public void printToStream(PrintStream out) {
         /* call helper method to create the clientSocket */
         clientSocket = makeSocket(LOCAL_PORT);
 
@@ -82,37 +91,39 @@ public class ChargenUdpClient extends AbstractChargenClient {
     /**
      * Helper method that creates and returns a new DatagramSocket using a given
      * port number and using the local host address.
+     *
      * @param port - The given destination port number.
      * @return - A new DatagramSocket to be used to talk to the server.
-     * @throws SocketException - when creating a new DatagramSocket.
-     * @throws UnknownHostException - if local host can't be resolved into an
-     * address.
+     * @throws ChargenServerException - When creating a new DatagramSocket or if
+     *                                local host can't be resolved.
      */
-    private DatagramSocket makeSocket(int port) throws SocketException, UnknownHostException
-    {
-        DatagramSocket newSocket;
+    private DatagramSocket makeSocket(int port) throws ChargenServerException {
+        try {
+            DatagramSocket newSocket;
 
-        // create new socket
-        newSocket = new DatagramSocket(port, InetAddress.getLocalHost());
+            // create new socket
+            newSocket = new DatagramSocket(port, InetAddress.getLocalHost());
 
-        return newSocket;
+            return newSocket;
+        } catch (SocketException se) {
+            throw new ChargenServerException(se);
+        } catch (UnknownHostException uhe) {
+            throw new ChargenServerException(uhe);
+        }
     }
 
     /**
      * Helper method creates a new DatagramPacket to send between the client
      * and server during communication.
+     *
      * @param buffer - An array of bytes to hold sent and received data.
      * @param length - The length of the buffer.
-     * @param host - The IP address of the remote host.
-     * @param port - The remote host's port number.
+     * @param host   - The IP address of the remote host.
+     * @param port   - The remote host's port number.
      * @return - A new DatagramPacket to use for communication.
-     * @throws UnknownHostException - if invalid information is given to the
-     * packet.
      */
     private DatagramPacket makePacket(byte[] buffer, int length,
-                                      InetAddress host, int port)
-            throws UnknownHostException
-    {
+                                      InetAddress host, int port) {
         DatagramPacket packet;
 
         // create new packet
@@ -123,25 +134,27 @@ public class ChargenUdpClient extends AbstractChargenClient {
     /**
      * Helper method that communicates between client and server. Sends a
      * DatagramPacket to a server and receives one in response.
+     *
      * @param clientSocket - The socket used for client/server communications.
-     * @param packet - The packet to be exchanged.
-     * @param buffer - The buffer to hold received data.
-     * @throws SocketTimeoutException - when the socket has timed out.
-     * @throws java.net.SocketException - when the receiving socket has
-     * encountered problems.
-     * @throws IOException - if the client and server communicated incorrectly.
+     * @param packet       - The packet to be exchanged.
+     * @param buffer       - The buffer to hold received data.
+     * @throws ChargenServerException - when the socket has timed out, when the
+     *                                receiving socket has problems, or if
+     *                                the client and server miscommunicate.
      */
     private void communicate(DatagramSocket clientSocket, DatagramPacket packet,
-                             byte[] buffer) throws SocketTimeoutException,
-                             SocketException, IOException
-    {
-        // send a DatagramPacket to server
-        clientSocket.send(packet);
+                             byte[] buffer) {
+        try {
+            // send a DatagramPacket to server
+            clientSocket.send(packet);
 
-        // set timeout time
-        clientSocket.setSoTimeout(TIMEOUT);
+            // set timeout time
+            clientSocket.setSoTimeout(TIMEOUT);
 
-        // receive a DatagramPacket from the server
-        clientSocket.receive(packet);
+            // receive a DatagramPacket from the server
+            clientSocket.receive(packet);
+        } catch (IOException ioe) {
+            throw new ChargenServerException(ioe);
+        }
     }
 }
