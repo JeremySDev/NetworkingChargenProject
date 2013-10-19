@@ -55,6 +55,7 @@ public class ChargenTcpServer extends AbstractChargenServer {
     public void listen ()
     {
         String flag;
+        /* try with resources to create sockets */
         try
                 (
             /* Make a connection to a client socket */
@@ -74,7 +75,10 @@ public class ChargenTcpServer extends AbstractChargenServer {
             /* get the flag from the client */
             flag = inFromClient.next();
 
+            /* Call helper method */
             flagHelper(flag);
+
+            /* while the client is still going keep giving chars */
             while (!outToClient.checkError()) {
                 outToClient.println(this.getCharacterSource().getNextChar());
             }
@@ -83,15 +87,17 @@ public class ChargenTcpServer extends AbstractChargenServer {
             System.err.println("Unable to read data from an open socket.");
             System.err.println(ioe.toString());
         }
+        /* start the server over */
         listen();
     }
 
     /**
-     * @param flag
+     * flagHelper - helper method to set the character source
+     *
+     * @param flag the type of character source to be use
      */
     private void flagHelper (String flag)
     {
-        System.out.println("Flag: " + flag);
         switch (flag) {
             case "NAN":
                 this.changeSource(new NonAlphaNumericCharacterSource());
