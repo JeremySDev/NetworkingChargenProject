@@ -19,27 +19,50 @@ import java.util.Scanner;
  */
 public class ChargenTcpServer extends AbstractChargenServer {
 
+    /* Default port for the to use */
     private static final int DEFAULT_PORT = 12343;
 
+    /* number of the port to use */
     private final int port;
 
+    /* the ChargenCharacterSource to be used */
     private final ChargenCharacterSource source;
 
+    /**
+     * The default constructor to be used.
+     */
     public ChargenTcpServer ()
     {
         this(DEFAULT_PORT, new DefactoChargenCharacterSource());
     }
 
+    /**
+     * the constructor to be used when given a port number.
+     *
+     * @param port - the port number to be used.
+     */
     public ChargenTcpServer (int port)
     {
         this(port, new DefactoChargenCharacterSource());
     }
 
+    /**
+     * The constructor to be used when passed the ChargenCharacterSource to use.
+     *
+     * @param source - the source to use for ChargenCharacterSource
+     */
     public ChargenTcpServer (ChargenCharacterSource source)
     {
         this(DEFAULT_PORT, source);
     }
 
+    /**
+     * the constructor to be used by all other constructors to set the port and
+     * source fields.
+     *
+     * @param port - the port number to be used.
+     * @param source - the source to use for ChargenCharacterSource
+     */
     public ChargenTcpServer (int port, ChargenCharacterSource source)
     {
         this.port = port;
@@ -83,7 +106,6 @@ public class ChargenTcpServer extends AbstractChargenServer {
                 outToClient.println(this.getCharacterSource().getNextChar());
             }
         }
-        /* cats */
         catch (IOException ioe) {
             System.err.println("Unable to read data from an open socket.");
             System.err.println(ioe.toString());
@@ -100,15 +122,19 @@ public class ChargenTcpServer extends AbstractChargenServer {
     private void flagHelper (String flag)
     {
         switch (flag) {
+            /* if its NAN set it to NonAlphaNumericCharacterSource */
             case "NAN":
                 this.changeSource(new NonAlphaNumericCharacterSource());
                 break;
+            /* if its AN set it to AlphaNumericCharacterSource */
             case "AN":
                 this.changeSource(new AlphaNumericCharacterSource());
                 break;
+            /* if its N set it to AlphaNumericCharacterSource */
             case "N":
                 this.changeSource(new NumericCharacterSource());
                 break;
+            /* default is to set it to DefactoCharacterSource */
             default:
                 this.changeSource(new DefactoChargenCharacterSource());
                 break;
