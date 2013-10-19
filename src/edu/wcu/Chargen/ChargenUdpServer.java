@@ -45,7 +45,7 @@ public class ChargenUdpServer extends AbstractChargenServer {
      * generation type.
      * throws SocketException - if an I/O error occurs when opening the socket.
      */
-    public ChargenUdpServer() throws SocketException
+    public ChargenUdpServer()
     {
         this(DEFAULT_PORT, new DefactoChargenCharacterSource());
     }
@@ -55,7 +55,7 @@ public class ChargenUdpServer extends AbstractChargenServer {
      * @param port - A given port number for this server.
      * @throws IOException - if an I/O error occurs when opening the socket.
      */
-    public ChargenUdpServer(int port) throws IOException
+    public ChargenUdpServer(int port)
     {
         this(port, new DefactoChargenCharacterSource());
     }
@@ -67,7 +67,7 @@ public class ChargenUdpServer extends AbstractChargenServer {
      *                 to generate.
      * @throws IOException - if an I/O error occurs when opening the socket.
      */
-    public ChargenUdpServer(ChargenCharacterSource source) throws IOException
+    public ChargenUdpServer(ChargenCharacterSource source)
     {
         this(DEFAULT_PORT, source);
     }
