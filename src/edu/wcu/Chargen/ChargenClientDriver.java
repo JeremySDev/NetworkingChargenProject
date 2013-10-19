@@ -23,6 +23,7 @@ import java.net.InetAddress;
  */
 public class ChargenClientDriver {
     public static void main(String[] args) throws IOException {
+        //TODO: Remove "throws IOException" and handle ChargenServerExceptions
         /* default "well-known" chargen port number */
         int portNum = 19;
 

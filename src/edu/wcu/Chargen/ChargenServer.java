@@ -13,5 +13,11 @@ import java.io.IOException;
  */
 public interface ChargenServer {
     /* listen will listen for requests from clients. */
-    public void listen() throws IOException;
+
+    /**
+     * Listens for a connection from a client.
+     * @throws ChargenServerException - If there are problems receiving or
+     *                                  sending a packet.
+     */
+    public void listen() throws ChargenServerException;
 }
