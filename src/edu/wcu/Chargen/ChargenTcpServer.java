@@ -37,7 +37,7 @@ public class ChargenTcpServer extends AbstractChargenServer {
     }
 
     /**
-     * the constructor to be used when given a port number.
+     * The constructor to be used when given a port number.
      *
      * @param port - the port number to be used.
      */
@@ -106,8 +106,7 @@ public class ChargenTcpServer extends AbstractChargenServer {
             }
         }
         catch (IOException ioe) {
-            System.err.println("Unable to read data from an open socket.");
-            System.err.println(ioe.toString());
+            throw new ChargenServerException(ioe);
         }
         /* start the server over */
         listen();
