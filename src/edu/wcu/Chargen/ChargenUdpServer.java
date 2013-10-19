@@ -106,7 +106,8 @@ public class ChargenUdpServer extends AbstractChargenServer {
      * The service only send one datagram in response to each received
      * datagram, so there is no concern about the service sending data faster
      * than the user can process it.
-     * @throws ChargenServerException - if there are problems closing a socket.
+     * @throws ChargenServerException - If there are problems receiving or
+     *                                  sending a packet.
      */
     public void listen()
     {
@@ -146,6 +147,8 @@ public class ChargenUdpServer extends AbstractChargenServer {
      * @param charSequence - The sequence of chars to generate.
      * @param randomNum - A randomly-generated number.
      * @param random - A Random object to generate a random number.
+     * @throws ChargenServerException - If there are problems receiving and
+     *                                  sending a packet.
      */
     private void listenHelp(DatagramPacket receivePacket,
                             DatagramPacket sendPacket, String charSequence,
