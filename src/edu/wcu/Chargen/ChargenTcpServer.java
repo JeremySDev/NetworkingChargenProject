@@ -83,6 +83,7 @@ public class ChargenTcpServer extends AbstractChargenServer {
                 outToClient.println(this.getCharacterSource().getNextChar());
             }
         }
+        /* cats */
         catch (IOException ioe) {
             System.err.println("Unable to read data from an open socket.");
             System.err.println(ioe.toString());
