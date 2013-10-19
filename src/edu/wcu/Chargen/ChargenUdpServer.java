@@ -127,17 +127,23 @@ public class ChargenUdpServer extends AbstractChargenServer {
         // Random number generator
         Random random = new Random();
 
-        // TODO: Needs to stop at some time, exception, error?
+        // Flag to see if an error is encountered
+        boolean error = false;
+
         // wait to receive a datagram
-        while (true)
+        while (error == false)
         {
-            // call helper method to set up and send packet
-            listenHelp(receievePacket, sendPacket, charSequence, randomNum,
-                    random);
+            try {
+                // call helper method to set up and send packet
+                listenHelp(receievePacket, sendPacket, charSequence, randomNum,
+                        random);
+            } catch (ChargenServerException cse) {
+                error = true;
+            }
         }
 
-        // TODO: close the socket after done listening... here?
-        //serverSocket.close();
+        // close the socket after done listening
+        serverSocket.close();
     }
 
     /**
@@ -154,6 +160,9 @@ public class ChargenUdpServer extends AbstractChargenServer {
                             DatagramPacket sendPacket, String charSequence,
                             int randomNum, Random random)
     {
+        // flag for if an error is encountered
+        boolean error = true;
+
         try{
             // receive a packet from the client
             serverSocket.receive(receivePacket);
