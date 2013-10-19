@@ -52,7 +52,7 @@ public abstract class AbstractChargenClient implements ChargenClient {
     /**
      * getHost - returns the host field of the AbstractChargenClient.
      *
-     * @return host - the InetAddress of the host.
+     * @return - the InetAddress of the host.
      */
     protected InetAddress getHost()
     {
@@ -62,7 +62,7 @@ public abstract class AbstractChargenClient implements ChargenClient {
     /**
      * getPort - returns the port field of the AbstractChargenClient.
      *
-     * @return port - the number of the port being used
+     * @return - the number of the port being used
      */
     protected int getPort()
     {
@@ -73,7 +73,7 @@ public abstract class AbstractChargenClient implements ChargenClient {
      * setFlag - sets the flag which is to be used to determine what Character
      * source should be used
      *
-     * @param flag determines to Character source to be used
+     * @param flag - determines to Character source to be used
      */
     public void setFlag (String flag)
     {
@@ -84,6 +84,7 @@ public abstract class AbstractChargenClient implements ChargenClient {
      * getFlag - gets the flag which is to be used to determine what Character
      * source should be used
      *
+     * @return - A String of the flag's value.
      */
     protected String getFlag()
     {
@@ -94,13 +95,10 @@ public abstract class AbstractChargenClient implements ChargenClient {
      * Abstract method used to print data received from the server into a given
      * output stream.
      * @param out - A given PrintStream used to contain server data to print.
-     * @throws SocketTimeoutException - when the socket has timed out.
-     * @throws SocketException - when creating a new DatagramSocket.
-     * @throws UnknownHostException - if local host can't be resolved into an
-     * address.
-     * @throws IOException - if the client and server communicated incorrectly.
+     * @throws ChargenServerException - if the client and server communicated
+     *                                  incorrectly.
      */
     @Override
-    public abstract void printToStream(PrintStream out) throws SocketTimeoutException,
-            SocketException, UnknownHostException, IOException;
+    public abstract void printToStream(PrintStream out) throws
+            ChargenServerException;
 }
