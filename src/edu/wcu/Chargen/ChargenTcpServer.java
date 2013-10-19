@@ -47,69 +47,43 @@ public class ChargenTcpServer extends AbstractChargenServer {
     }
 
     /**
+     * listen - this method listens for a connection from a client then receives
+     * a flag to determine which character source to use.
      *
      */
     @Override
     public void listen ()
     {
-        String flag = "cats";
-        ServerSocket serverSocket = null;
-        Socket clientSocket = null;
-        Scanner inFromClient = null;
-        PrintStream outToClient = null;
-
+        String flag;
         try
-        {
+                (
             /* Make a connection to a client socket */
-            serverSocket = new ServerSocket(this.port);
+            ServerSocket serverSocket = new ServerSocket(this.port);
 
             /* Connect to a client socket */
-            clientSocket = serverSocket.accept();
+            Socket clientSocket = serverSocket.accept();
 
             /* Create a scanner to catch the flag input of the client */
-            inFromClient = new Scanner(new InputStreamReader(
+            Scanner inFromClient = new Scanner(new InputStreamReader(
                     clientSocket.getInputStream()));
 
             /* Create a print stream from the client socket to send the chars */
-            outToClient = new PrintStream(clientSocket.getOutputStream());
-
+            PrintStream outToClient = new PrintStream(
+                    clientSocket.getOutputStream())
+                ) {
             /* get the flag from the client */
             flag = inFromClient.next();
 
             flagHelper(flag);
-            while (!clientSocket.isOutputShutdown())
-            {
+            while (!outToClient.checkError()) {
                 outToClient.println(this.getCharacterSource().getNextChar());
-                System.out.println("in the while");
             }
-            System.out.println("hello");
-
-            //inFromClient.close();
-            //outToClient.close();
-            //clientSocket.close();
-            //serverSocket.close();
-            listen();
         }
         catch (IOException ioe) {
             System.err.println("Unable to read data from an open socket.");
             System.err.println(ioe.toString());
-            //System.exit(1);
         }
-        finally
-        {
-            inFromClient.close();
-            outToClient.close();
-            try {
-                clientSocket.close();
-                serverSocket.close();
-            }
-            catch (IOException e) {
-                System.err.println("Unable to read data from an open socket.");
-                System.err.println(e.toString());
-                //System.exit(1);
-            }
-        }
-        System.out.println("Flag: " + flag);
+        listen();
     }
 
     /**
