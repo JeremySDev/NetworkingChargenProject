@@ -11,5 +11,10 @@ package edu.wcu.Chargen;
  * @version 10/8/13.
  */
 public interface ChargenCharacterSource {
+
+    /**
+     * Gets the next char from an available list of chars and returns it.
+     * @return - A char from the current index of a list of usable chars.
+     */
     public char getNextChar();
 }
