@@ -72,7 +72,6 @@ public class ChargenTcpServer extends AbstractChargenServer {
     /**
      * listen - this method listens for a connection from a client then receives
      * a flag to determine which character source to use.
-     *
      */
     @Override
     public void listen ()
