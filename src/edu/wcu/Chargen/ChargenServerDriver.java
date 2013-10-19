@@ -15,8 +15,7 @@ import java.io.IOException;
  * @version 10/8/13.
  */
 public class ChargenServerDriver {
-    // TODO: Remove throws IO Exception and catch ChargenServerException
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         /* default "well-known" chargen port number */
         int portNum = 12343;
 
@@ -32,16 +31,10 @@ public class ChargenServerDriver {
             usage();
         }
 
-        /* TODO: ask Kreahling if we should exit or try to get the right server type */
         /* Only one arg then set the server type */
         if (args.length >= 1)
         {
             serverType = args[0];
-            /*if (!serverType.equalsIgnoreCase("TCP") ||
-                    !serverType.equalsIgnoreCase("UDP"))
-            {
-                usage();
-            }*/
         }
 
         /* Two arguments set the port number as well */
@@ -53,12 +46,22 @@ public class ChargenServerDriver {
         if (serverType != null) {
             if (serverType.equalsIgnoreCase("TCP"))
             {
-                chargenServer = new ChargenTcpServer(portNum);
+                try {
+                    chargenServer = new ChargenTcpServer(portNum);
+                } catch (ChargenServerException cse) {
+                    System.err.println(cse.getMessage());
+                    System.exit(1);
+                }
             }
 
             if (serverType.equalsIgnoreCase("UDP"))
             {
-                chargenServer = new ChargenUdpServer(portNum);
+                try {
+                    chargenServer = new ChargenUdpServer(portNum);
+                } catch (ChargenServerException cse) {
+                    System.err.println(cse.getMessage());
+                    System.exit(1);
+                }
             }
         }
 

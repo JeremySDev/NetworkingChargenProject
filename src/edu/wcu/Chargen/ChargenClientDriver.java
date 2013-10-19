@@ -3,6 +3,7 @@ package edu.wcu.Chargen;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  * ChargenClientDriver is the entry point of the application. It includes one
@@ -22,8 +23,8 @@ import java.net.InetAddress;
  * @version 10/8/13.
  */
 public class ChargenClientDriver {
-    public static void main(String[] args) throws IOException {
-        //TODO: Remove "throws IOException" and handle ChargenServerExceptions
+    public static void main(String[] args) {
+
         /* default "well-known" chargen port number */
         int portNum = 19;
 
@@ -46,7 +47,6 @@ public class ChargenClientDriver {
             usage();
         }
 
-        /* TODO: ask Kreahling if we should exit or try to get the right server type */
         /* Take the two mandatory arguments to set the server type and host */
         if (args.length >= 2)
         {
@@ -63,7 +63,6 @@ public class ChargenClientDriver {
         /* if there is a third arg set that as the flag for our chargen server*/
         if (args.length >= 4)
         {
-            // TODO: pass to UDP/TCP clients!
             chargenFlag = args[3];
         }
 
@@ -71,15 +70,31 @@ public class ChargenClientDriver {
         if (clientType != null) {
             if (clientType.equalsIgnoreCase("TCP"))
             {
-                /* create a chargenClient hostname and port number given */
-                chargenClient = new ChargenTcpClient(
-                        /* create an InetAddress from the String hostName */
-                        InetAddress.getByName(hostName), portNum);
+                try {
+                    /* create a chargenClient hostname and port number given */
+                    chargenClient = new ChargenTcpClient(
+                            /* create an InetAddress from the String hostName */
+                            InetAddress.getByName(hostName), portNum);
+                } catch (UnknownHostException uhe) {
+                    System.err.println(uhe.getMessage());
+                    System.exit(1);
+                } catch (ChargenServerException cse) {
+                    System.err.println(cse.getMessage());
+                    System.exit(1);
+                }
             }
             else if (clientType.equalsIgnoreCase("UDP"))
             {
-                chargenClient = new ChargenUdpClient(
-                        InetAddress.getByName(hostName), portNum);
+                try {
+                    chargenClient = new ChargenUdpClient(
+                            InetAddress.getByName(hostName), portNum);
+                } catch (UnknownHostException uhe) {
+                    System.err.println(uhe.getMessage());
+                    System.exit(1);
+                } catch (ChargenServerException cse) {
+                System.err.println(cse.getMessage());
+                System.exit(1);
+                }
             }
             else
             {
@@ -89,9 +104,14 @@ public class ChargenClientDriver {
 
         if (chargenClient != null)
         {
-            PrintStream out = new PrintStream(System.out);
-            chargenClient.setFlag(chargenFlag);
-            chargenClient.printToStream(out);
+            try {
+                PrintStream out = new PrintStream(System.out);
+                chargenClient.setFlag(chargenFlag);
+                chargenClient.printToStream(out);
+            } catch (ChargenServerException cse) {
+                System.err.println(cse.getMessage());
+                System.exit(1);
+            }
         }
     }
 
