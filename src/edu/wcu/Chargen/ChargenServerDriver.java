@@ -1,5 +1,4 @@
 package edu.wcu.Chargen;
-import java.io.IOException;
 
 /**
  * ChargenServerDriver provides the entry point for this application. It has

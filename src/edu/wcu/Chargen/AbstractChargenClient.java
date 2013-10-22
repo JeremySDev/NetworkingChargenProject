@@ -1,10 +1,7 @@
 package edu.wcu.Chargen;
-import java.io.IOException;
+
 import java.io.PrintStream;
 import java.net.InetAddress;
-import java.net.SocketException;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
 
 /**
  * AbstractChargenClient is an abstract class that implements the ChargenClient

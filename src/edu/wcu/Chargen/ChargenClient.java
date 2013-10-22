@@ -1,9 +1,6 @@
 package edu.wcu.Chargen;
-import java.io.IOException;
+
 import java.io.PrintStream;
-import java.net.SocketException;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
 
 /**
  * ChargenClient is the interface to a chargen client implementation. The
