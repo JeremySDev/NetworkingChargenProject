@@ -106,7 +106,7 @@
   <property name="module.jdk.classpath.chargenproject" value="${project.jdk.classpath}"/>
   
   <property name="compiler.args.chargenproject" value="${compiler.args}"/>
-  
+
   <property name="chargenproject.output.dir" value="${module.chargenproject.basedir}/out/production/ChargenProject"/>
   <property name="chargenproject.testoutput.dir" value="${module.chargenproject.basedir}/out/test/ChargenProject"/>
   
@@ -184,4 +184,10 @@
   <target name="build.modules" depends="init, clean, compile.module.chargenproject" description="build all modules"/>
   
   <target name="all" depends="build.modules" description="build all"/>
+  <jar destfile="${ant.project.name}.jar" basedir="${module.chargenproject.basedir}">
+    <manifest>
+        <attribute name="Main-Class" value="edu.wcu.Chargen.ChargenServerDriver"/>
+    </manifest>
+  </jar>
+
 </project>
