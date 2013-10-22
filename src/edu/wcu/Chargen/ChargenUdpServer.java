@@ -51,7 +51,7 @@ public class ChargenUdpServer extends AbstractChargenServer {
     /**
      * Constructor that takes a port number and creates a socket based on it.
      * @param port - A given port number for this server.
-     * @throws IOException - if an I/O error occurs when opening the socket.
+     * @throws IOException if an I/O error occurs when opening the socket.
      */
     public ChargenUdpServer(int port)
     {

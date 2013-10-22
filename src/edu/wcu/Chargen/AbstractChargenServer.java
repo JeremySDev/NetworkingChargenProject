@@ -91,7 +91,7 @@ public abstract class AbstractChargenServer implements ChargenServer {
      * changeSource - allows for the modification of the source field in the
      * AbstractChargenServer.
      *
-     * @param - A CharacterSource.
+     * @param source - A CharacterSource.
      */
     protected void changeSource(ChargenCharacterSource source)
     {
