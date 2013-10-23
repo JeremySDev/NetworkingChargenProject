@@ -25,6 +25,9 @@
         <module name="Chargen" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Chargen" target="1.4" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 
