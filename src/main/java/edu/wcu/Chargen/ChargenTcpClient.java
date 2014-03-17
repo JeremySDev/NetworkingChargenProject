@@ -54,8 +54,6 @@ public class ChargenTcpClient extends AbstractChargenClient {
             /* Create a Scanner to get the output of the Chargen server */
             Scanner outputFromServer = new Scanner(new InputStreamReader(
                     clientSocket.getInputStream()));
-            Scanner outputFromServer2 = new Scanner(new InputStreamReader(
-                    clientSocket.getInputStream()));
 
             /* Print the output of the server to the screen */
             while (outputFromServer.hasNext())
